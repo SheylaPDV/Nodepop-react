@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLatestProducts } from "./service.js";
 import './ProductsPage.css';
+import Layout from "../layout/layout.js";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -14,13 +15,23 @@ const ProductsPage = () => {
     execute();
   }, []);
   return (
-    <div className="productsPage">
-      <ul>
+    <Layout title="NodePOP ...">
+      <div className="productsPage">
+      <ul
+        style={{
+          listStyle: 'none',
+          margin: 0,
+          padding: '2em',
+          display: products ? 'block' : 'none',
+        }}
+      >
         {products.map(product => (
-          <li key={product.id}>{product.content}</li>
+          <li key={product.id}>{product.nombre}{product.precio}{product.estado}{product.tags}</li>
         ))}
       </ul>
     </div>
+    </Layout>
+    
   );
 };
 
