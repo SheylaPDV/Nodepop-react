@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getLatestProducts } from "./service.js";
+import './ProductsPage.css';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const ProductsPage = () => {
     execute();
   }, []);
   return (
-    <div className="ProductosPage">
+    <div className="productsPage">
       <ul>
         {products.map(product => (
           <li key={product.id}>{product.content}</li>
