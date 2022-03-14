@@ -5,7 +5,9 @@ function App() {
   return (
     <div className="App">
       <ProductsPage/>
-      <Button>Primary</Button>
+      <Button variant="primary">Primary</Button>
+      <Button>Normal</Button>
+      <Button disabled>Normal</Button>
     </div>
   );
 }

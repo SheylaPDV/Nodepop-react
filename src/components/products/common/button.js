@@ -27,6 +27,13 @@ const Button = styled.button`
     text-decoration: none;
     transition: background-color 0.2s;
 
+    &:hover {
+        background-color: ${props =>
+            props.variant === 'primary'
+            ? 'rgb(26, 145, 218)'
+            : 'rgba(29, 161, 242, 0.3)'};
+    }
+
 `;
 
 export default Button;
