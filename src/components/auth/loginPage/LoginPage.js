@@ -2,8 +2,18 @@ import { useState } from "react";
 import Button from "../../common/button";
 
 function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    setCredentials(credentials => ({ 
+      ...credentials,//cojo el estado antiguo
+      [event.target.name]: event.target.value,//cojo el estado nuevo, con value. y con name el nombre del dato que me viene
+    }));
+  };
+
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Login to Nodepop</h1>
@@ -12,17 +22,15 @@ function LoginPage() {
           type="text"
           name="username"
           placeholder="correo electronico"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
+          value={credentials.username}
+          onChange={handleChange}
         />
         <input
           type="password"
           name="password"
           placeholder="contraseña"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          value={setCredentials.password}
+          onChange={handleChange}
         />
         <Button type="submit" variant="primary">
           Login
