@@ -6,6 +6,7 @@ function LoginPage() {
     username: "",
     password: "",
   });
+  const {username, password} = credentials;
 
   const handleChange = (event) => {
     setCredentials(credentials => ({ 
@@ -14,25 +15,31 @@ function LoginPage() {
     }));
   };
 
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('call to api', credentials)
+  };
+
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Login to Nodepop</h1>
+      <form onSubmit={handleSubmit}></form>
       <form>
         <input
           type="text"
           name="username"
           placeholder="correo electronico"
-          value={credentials.username}
+          value={username}
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
           placeholder="contraseña"
-          value={setCredentials.password}
+          value={password}
           onChange={handleChange}
         />
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" disabled={!username || !password}>
           Login
         </Button>
       </form>
