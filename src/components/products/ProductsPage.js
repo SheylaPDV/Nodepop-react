@@ -3,7 +3,7 @@ import { getLatestProducts } from "./service.js";
 import './ProductsPage.css';
 import Layout from "../layout/layout.js";
 
-const ProductsPage = () => {
+const ProductsPage = ({isLogged}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const ProductsPage = () => {
     execute();
   }, []);
   return (
-    <Layout title="NodePOP ...">
+    <Layout title="NodePOP ..." isLogged={isLogged}>
       <div className="productsPage">
       <ul
         style={{

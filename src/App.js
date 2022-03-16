@@ -1,21 +1,22 @@
 import ProductsPage from "./components/products/ProductsPage.js";
 import Button from "./components/common/button.js";
 import NewProductPage from "./components/products/NewProductPage/NewProductPage.js";
-import { useState } from 'react';
-import classNames from "classnames";
+import { useState } from "react";
 import LoginPage from "./components/auth/loginPage/LoginPage.js";
 
-
-
 function App() {
-  const container = true;
+  const [isLogged, setIsLogged] = useState(false);
+
+  const handleLogin = () => {
+    setIsLogged(true);
+  };
   return (
-    <div className={classNames("App", { container })}>
+    <div className="App">
       {/* <ProductsPage />
       <NewProductPage />
       <ProductsPage />
        */}
-       <LoginPage></LoginPage>
+      {isLogged ? <ProductsPage isLogged={isLogged} /> : <LoginPage onLogin={handleLogin} />}
     </div>
   );
 }
