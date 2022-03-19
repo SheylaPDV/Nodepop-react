@@ -1,5 +1,5 @@
-import Header from "./header.js";
-import './layout.css';
+import Header from "../header/header.js";
+import '../../assets/css/layout.css';
 
 function Layout({ children, title, isLogged }) {
   return (

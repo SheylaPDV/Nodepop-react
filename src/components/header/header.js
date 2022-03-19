@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import logo from "../../images/unnamed.jpg";
-import Button from "../common/button";
-import "./header.css";
+import logo from "../../assets/images/unnamed.jpg";
+import Button from "../button/button.js";
+import "../../assets/css/header.css";
 
 
 function Header({ className, isLogged }) {

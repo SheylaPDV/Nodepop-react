@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../../common/button";
-import { login } from "../service";
+import Button from "../button/button";
+import { login } from "../auth/service";
 
 function LoginPage({ onLogin }) {
   const [credentials, setCredentials] = useState({
@@ -8,11 +8,13 @@ function LoginPage({ onLogin }) {
     password: "",
     remember: false,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { username, password, remember } = credentials;
   //   const {username, ...rest} = credentials: // rest es todo lo que no sea username, te devuelve un objeto con todo lo demas
 
-  const handleChange = event => {
-    setCredentials(credentials => ({
+  const handleChange = (event) => {
+    setCredentials((credentials) => ({
       ...credentials, //cojo el estado antiguo
       [event.target.name]:
         event.target.type === "checkbox"
@@ -21,68 +23,70 @@ function LoginPage({ onLogin }) {
     }));
   };
 
-  const handleSubmit = async event => {
+  const resetError = () => setError(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { accessToken } = await login(credentials);
-
+      resetError(); //limpiar error
+      setIsLoading(true);
+      await login(credentials);
+      setIsLoading(false);
       onLogin();
-      console.log("logged", accessToken);
     } catch (error) {
-      console.log(error);
+      setError(error);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="loginPage">
-      <h1 className="loginPage-title">Login to Nodepop</h1>
-      <form onSubmit={handleSubmit}></form>
-      <form>
+      <h1 className="loginPage-title">Log in to Twitter</h1>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"
-          placeholder="correo electronico"
           value={username}
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
-          placeholder="contraseña"
           value={password}
           onChange={handleChange}
         />
-
         <input
           type="checkbox"
           name="remember"
           checked={remember}
+          value="remember"
           onChange={handleChange}
         />
-
-        {/* <select value={desplegable} onChange={handleChange} >
-            <option value="1">nombre</option>
-            <option value="2">tags</option>
-            <option value="3">precio</option>
-            <option value="4">compra o venta</option>
-        </select> */}
-
-        {/* <input
+        <select value="2" onChange={(event) => console.log(event)}>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <input
           type="file"
-          onChange={(event) => console.log(event.target.files)}
-        ></input> */}
+          onChange={(event) => console.log(event.target.files[0])}
+        />
 
         <Button
           type="submit"
           variant="primary"
-          disabled={!username || !password}
+          disabled={!username || !password || isLoading}
         >
-          Login
+          Log in
         </Button>
       </form>
+      {error && (
+        <div onClick={resetError} style={{ color: "red" }}>
+          {error.message}
+        </div>
+      )}
     </div>
   );
 }
-
 export default LoginPage;

@@ -1,4 +1,4 @@
-import client from "../../api/client.js";
+import client from "./api/client.js";
 
 const productsBaseUrl = "/api";
 

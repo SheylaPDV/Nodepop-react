@@ -1,4 +1,4 @@
-import Layout from "../../layout/layout.js";
+import Layout from "../layout/layout";
 
 const NewProductPage = () => {
   return (

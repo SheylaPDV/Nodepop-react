@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getLatestProducts } from "./service.js";
-import './ProductsPage.css';
+import { getLatestProducts } from "../../service.js";
+import '../../assets/css/ProductsPage.css';
 import Layout from "../layout/layout.js";
 
 const ProductsPage = ({isLogged}) => {

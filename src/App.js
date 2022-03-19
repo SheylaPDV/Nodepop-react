@@ -1,21 +1,24 @@
-import ProductsPage from "./components/products/ProductsPage.js";
-import Button from "./components/common/button.js";
-import NewProductPage from "./components/products/NewProductPage/NewProductPage.js";
+import ProductsPage from "./components/productsPage/ProductsPage";
+import Button from "./components/button/button";
+import NewProductPage from "./components/createProduct/NewProductPage";
 import { useState } from "react";
-import LoginPage from "./components/auth/loginPage/LoginPage.js";
+import LoginPage from "./components/login/LoginPage";
 
-function App() {
-  const [isLogged, setIsLogged] = useState(false);
-
+function App(isInitiallyLogged) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+  
+  
   const handleLogin = () => {
     setIsLogged(true);
   };
+  
   return (
     <div className="App">
       {/* <ProductsPage />
       <NewProductPage />
       <ProductsPage />
        */}
+       {/* <LoginPage></LoginPage> */}
       {isLogged ? <ProductsPage isLogged={isLogged} /> : <LoginPage onLogin={handleLogin} />}
     </div>
   );
