@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getLatestProducts } from "../../service.js";
+import { getLatestProducts } from "./service.js";
 import '../../assets/css/ProductsPage.css';
 import Layout from "../layout/layout.js";
 

@@ -10,7 +10,7 @@ setAuthorizationHeader(accessToken);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App isInitiallLogged={!accessToken} />
+    <App isInitiallyLogged={!accessToken} />
   </React.StrictMode>,
   document.getElementById("root")
 );

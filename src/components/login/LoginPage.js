@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "../button/button";
 import { login } from "../auth/service";
+import FormField from "../formField/FormField";
+import '../../assets/css/LoginPage.css'
+
 
 function LoginPage({ onLogin }) {
   const [credentials, setCredentials] = useState({
@@ -27,6 +30,7 @@ function LoginPage({ onLogin }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    login(credentials)
 
     try {
       resetError(); //limpiar error
@@ -40,19 +44,29 @@ function LoginPage({ onLogin }) {
     }
   };
 
+  const buttonDisabled = useMemo(() => {
+    console.log('calculando...');
+    return !username || !password || isLoading;
+  }, [username, password, isLoading]);
+
+
   return (
     <div className="loginPage">
       <h1 className="loginPage-title">Log in to Twitter</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <FormField
           type="text"
           name="username"
+          label='phone, email or username'
+          className="loginForm-field"
           value={username}
           onChange={handleChange}
         />
-        <input
+        <FormField
           type="password"
           name="password"
+          label="password"
+          className="loginForm-field"
           value={password}
           onChange={handleChange}
         />
@@ -74,15 +88,16 @@ function LoginPage({ onLogin }) {
         />
 
         <Button
+        className="loginForm-submit"
           type="submit"
           variant="primary"
-          disabled={!username || !password || isLoading}
+          disabled={buttonDisabled}
         >
           Log in
         </Button>
       </form>
       {error && (
-        <div onClick={resetError} style={{ color: "red" }}>
+        <div onClick={resetError} className="loginPage-error">
           {error.message}
         </div>
       )}
