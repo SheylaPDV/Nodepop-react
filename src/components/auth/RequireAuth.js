@@ -25,10 +25,4 @@ const ConectedRequireAuth = props => (
   </AuthContextConsumer>
 );
 
-// const ConectedRequireAuth = props => {
-//   const { isLogged } = useContext(AuthContext);
-
-//   return <RequireAuth isLogged={isLogged} {...props} />;
-// };
-
 export default ConectedRequireAuth;

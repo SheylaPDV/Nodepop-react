@@ -1,43 +1,62 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from 'react-router-dom'
+import T from 'prop-types'
 import Button from "../button/button";
 import { login } from "../auth/service";
 import FormField from "../formField/FormField";
 import '../../assets/css/LoginPage.css'
 
+function useRenders() {
+  const count = useRef(1);
+
+  useEffect(() => {
+    count.current++;
+  });
+  return count.current;
+}
 
 function LoginPage({ onLogin }) {
+  const renders = useRenders();
+  const ref = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { username, password, remember } = credentials;
-  //   const {username, ...rest} = credentials: // rest es todo lo que no sea username, te devuelve un objeto con todo lo demas
 
-  const handleChange = (event) => {
-    setCredentials((credentials) => ({
-      ...credentials, //cojo el estado antiguo
+  useEffect(() => {
+    console.log(ref.current);
+    ref.current.focus();
+  }, []);
+
+  const { username, password, remember } = credentials;
+
+  const handleChange = useCallback(event => {
+    setCredentials(credentials => ({
+      ...credentials,
       [event.target.name]:
-        event.target.type === "checkbox"
+        event.target.type === 'checkbox'
           ? event.target.checked
-          : event.target.value, //cojo el estado nuevo, con value. y con name el nombre del dato que me viene
+          : event.target.value,
     }));
-  };
+  }, []);
 
   const resetError = () => setError(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    login(credentials)
-
     try {
-      resetError(); //limpiar error
+      resetError();
       setIsLoading(true);
       await login(credentials);
       setIsLoading(false);
       onLogin();
+      const from = location.state?.from?.pathname || '/';
+      navigate(from, { replace: true });
     } catch (error) {
       setError(error);
       setIsLoading(false);
@@ -49,18 +68,19 @@ function LoginPage({ onLogin }) {
     return !username || !password || isLoading;
   }, [username, password, isLoading]);
 
-
   return (
     <div className="loginPage">
-      <h1 className="loginPage-title">Log in to Twitter</h1>
+      {renders}
+      <h1 className="loginPage-title">Log in to Nodepop</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
           type="text"
           name="username"
-          label='phone, email or username'
+          label="phone, email or username"
           className="loginForm-field"
           value={username}
           onChange={handleChange}
+          // ref={ref}
         />
         <FormField
           type="password"
@@ -69,6 +89,7 @@ function LoginPage({ onLogin }) {
           className="loginForm-field"
           value={password}
           onChange={handleChange}
+          ref={ref}
         />
         <input
           type="checkbox"
@@ -77,18 +98,18 @@ function LoginPage({ onLogin }) {
           value="remember"
           onChange={handleChange}
         />
-        <select value="2" onChange={(event) => console.log(event)}>
+        <select value="2" onChange={event => console.log(event)}>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
         </select>
         <input
           type="file"
-          onChange={(event) => console.log(event.target.files[0])}
+          onChange={event => console.log(event.target.files[0])}
         />
 
         <Button
-        className="loginForm-submit"
+          className="loginForm-submit"
           type="submit"
           variant="primary"
           disabled={buttonDisabled}
@@ -104,4 +125,9 @@ function LoginPage({ onLogin }) {
     </div>
   );
 }
+
+LoginPage.propTypes = {
+  onLogin: T.func,
+};
+
 export default LoginPage;

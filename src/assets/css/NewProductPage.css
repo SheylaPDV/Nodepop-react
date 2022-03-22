@@ -1,0 +1,23 @@
+.newProductPage {
+    display: flex;
+    padding: 10px 15px 0 15px;
+  }
+  
+  .newProductPage-textarea {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(230, 236, 240);
+  }
+  
+  .newProductPage-footer {
+    align-items: center;
+    display: flex;
+  }
+  
+  .newProductPage-characters {
+    color: rgb(29, 161, 242);
+  }
+  
+  .newProductPage-submit {
+    margin-left: auto;
+  }
+  

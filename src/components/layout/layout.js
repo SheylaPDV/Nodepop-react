@@ -1,18 +1,19 @@
 import Header from "../header/header.js";
 import '../../assets/css/layout.css';
+import { Outlet } from 'react'
 
-function Layout({ children, title, isLogged }) {
+
+function Layout() {
   return (
     <div className="layout">
-      
-      <Header className="layout-header bordered" isLogged={isLogged}/>
+      <Header className="layout-header bordered" />
       <main className="layout-main bordered">
-        <h2 className="layout-title bordered">{title}</h2>
-        <section className="layout-content">{children}</section>
+        <Outlet />
       </main>
-      <footer className="layout-footer bordered">@ 2022 Sheyla Pérez</footer>
+      <footer className="layout-footer bordered">© 2022 Keepcoding</footer>
     </div>
   );
 }
 
 export default Layout;
+

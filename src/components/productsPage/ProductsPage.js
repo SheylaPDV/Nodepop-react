@@ -1,37 +1,59 @@
 import { useEffect, useState } from "react";
 import { getLatestProducts } from "./service.js";
+import { Link } from 'react-router-dom'
+import styles from './ProductsPage.module.css'
+import Page from '../layout/Page'
+import Button from "../button/button.js";
+import Product from '../productsPage/Product'
 import '../../assets/css/ProductsPage.css';
-import Layout from "../layout/layout.js";
 
-const ProductsPage = ({isLogged}) => {
+const EmptyList = () => (
+  <div style={{ textAlign: 'center' }}>
+    <p>Be the first product!</p>
+    <Button as={Link} to="/products/new" variant="primary">
+      Tweet
+    </Button>
+  </div>
+);
+
+
+const useProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // getLatestProducts().then(products => setProducts(products));
     const execute = async () => {
-        const products = await getLatestProducts();
-        setProducts(products);
+      const products = await getLatestProducts();
+      setProducts(products);
     };
     execute();
+
+    return () => {};
   }, []);
+
+  return products;
+};
+
+const ProductsPage = () => {
+  const products = useProducts();
+
   return (
-    <Layout title="NodePOP ..." isLogged={isLogged}>
-      <div className="productsPage">
-      <ul
-        style={{
-          listStyle: 'none',
-          margin: 0,
-          padding: '2em',
-          display: products ? 'block' : 'none',
-        }}
-      >
-        {products.map(product => (
-          <li key={product.id}>{product.nombre}{product.precio}{product.estado}{product.tags}</li>
-        ))}
-      </ul>
-    </div>
-    </Layout>
-    
+    <Page title="What's going on...">
+      <div className={styles.productsPage}>
+        {products.length ? (
+          <ul>
+            {products.map(product => (
+              <li key={product.id}>
+                <Link to={`/products/${product.id}`}>
+                  <Product {...product} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyList />
+        )}
+      </div>
+    </Page>
   );
 };
 
