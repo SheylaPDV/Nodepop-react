@@ -1,6 +1,6 @@
 import Header from "../header/header.js";
 import '../../assets/css/layout.css';
-import { Outlet } from 'react'
+import { Outlet } from 'react-router-dom'
 
 
 function Layout() {

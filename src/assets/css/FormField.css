@@ -1,10 +1,10 @@
 .formField-label {
-  background-color: rgb(245, 248, 250);
+  background-color: rgba(223, 245, 233, 0.712);
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-color: rgb(101, 119, 134);
-  border-radius: 2px;
-  color: rgb(101, 119, 134);
+  border-color: rgb(46, 219, 167);
+  border-radius: 12px;
+  color: rgb(42, 190, 99);
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
@@ -33,6 +33,6 @@
 } */
 
 .formField:focus-within .formField-label {
-  color: rgb(29, 161, 242);
-  border-color: rgb(29, 161, 242);
+  color: rgb(41, 168, 98);
+  border-color: rgb(29, 242, 111);
 }

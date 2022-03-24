@@ -3,11 +3,17 @@
   display: flex;
 }
 
+.Loooooo {
+  height: 48px;
+  width: 48px;
+  border-radius: 30px;
+}
+
 .icono-header {
   align-items: center;
   background-color: transparent;
   border-radius: 9999px;
-  color: rgba(29, 161, 242, 1);
+  color: rgb(117, 247, 175);
   display: inline-flex;
   height: 48px;
   justify-content: center;

@@ -1,11 +1,10 @@
 import React from 'react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-import LikeButton from '../button/LikeButton';
 import Photo from '../photo/Photo';
 import '../../assets/css/Product.css';
 
-const Product = ({ content, updatedAt, user, likes }) => {
+const Product = ({ nombre, precio, estado, tags, updatedAt }) => {
   return (
     <article className="product bordered">
       <div className="left">
@@ -13,19 +12,19 @@ const Product = ({ content, updatedAt, user, likes }) => {
       </div>
       <div className="right">
         <div className="product-header">
-          <span className="product-name">{user.name}</span>
-          <span className="product-username">{user.username}</span>
+          <span className="product-name">{nombre.nombre}</span>
+          <span className="product-username">{precio.precio}</span>
           <span className="product-separator">·</span>
           <time dateTime={updatedAt}>
             {formatDistanceToNow(new Date(updatedAt))}
           </time>
         </div>
         <div>
-          {content}
+          {estado}
           <div className="product-actions">
-            <LikeButton onLike={event => console.log(event)}>
+            {/* <LikeButton onLike={event => console.log(event)}>
               {likes.length || null}
-            </LikeButton>
+            </LikeButton> */}
           </div>
         </div>
       </div>

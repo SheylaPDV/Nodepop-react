@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { getLatestProducts } from "./service.js";
-import { Link } from 'react-router-dom'
-import styles from './ProductsPage.module.css'
-import Page from '../layout/Page'
+import { Link } from "react-router-dom";
+import Page from "../layout/Page";
 import Button from "../button/button.js";
-import Product from '../productsPage/Product'
-import '../../assets/css/ProductsPage.css';
+import Product from "../productsPage/Product";
+import "../../assets/css/ProductsPage.css";
+import styles from "./ProductsPage.module.css";
+
 
 const EmptyList = () => (
-  <div style={{ textAlign: 'center' }}>
+  <div style={{ textAlign: "center" }}>
     <p>Be the first product!</p>
     <Button as={Link} to="/products/new" variant="primary">
       Tweet
     </Button>
   </div>
 );
-
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -41,7 +41,7 @@ const ProductsPage = () => {
       <div className={styles.productsPage}>
         {products.length ? (
           <ul>
-            {products.map(product => (
+            {products.map((product) => (
               <li key={product.id}>
                 <Link to={`/products/${product.id}`}>
                   <Product {...product} />

@@ -1,16 +1,16 @@
 import classNames from "classnames";
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/unnamed.jpg";
 import "../../assets/css/header.css";
-import AuthButton from '../button/AuthButton'
-
+import AuthButton from "../button/AuthButton";
+// import { ReactComponent as Icon } from "../../assets/images/wp.svg";
 
 function Header({ className }) {
   return (
-    <header className={classNames('header', className)}>
+    <header className={classNames("header", className)}>
       <Link to="/">
         <div className="header-logo">
-          <img src={logo} alt="Nodepop-React"></img>
+          <img src={logo} className="Loooooo" alt="Nodepop-React"></img>
           {/* <Icon width="32" height="32" /> */}
         </div>
       </Link>
@@ -18,14 +18,14 @@ function Header({ className }) {
         <NavLink
           to="/products/new"
           // className={({ isActive }) => (isActive ? 'active' : '')}
-          style={({ isActive }) => (isActive ? { color: 'green' } : null)}
+          style={({ isActive }) => (isActive ? { color: "green" } : null)}
         >
           New Product
         </NavLink>
         <NavLink
           to="/products"
           // className={({ isActive }) => (isActive ? 'active' : '')}
-          style={({ isActive }) => (isActive ? { color: 'green' } : null)}
+          style={({ isActive }) => (isActive ? { color: "green" } : null)}
           end
         >
           See all products

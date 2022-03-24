@@ -1,14 +1,14 @@
-import client from "../../api/client.js";
-
-const productsBaseUrl = "/api/products";
+import client from "../../api/client";
+// llamadas al api
+const productsBaseUrl = "/api";
 
 export const getLatestProducts = () => {
-  const url = `${productsBaseUrl}/products`;
+  const url = `${productsBaseUrl}`;
   return client.get(url);
 };
 
 export const getProduct = productId => {
-  const url = `${productsBaseUrl}/${productId}?_expand=user&_embed=likes`;
+  const url = `${productsBaseUrl}/${productId}`;
   return client.get(url);
 };
 

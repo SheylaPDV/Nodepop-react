@@ -36,7 +36,7 @@ const NewProductPage = () => {
   const buttonDisabled = content.length < 5;
 
   if (createdProduct) {
-    return <Navigate to={`/tweets/${createdProduct.id}`} />;
+    return <Navigate to={`/products/${createdProduct.id}`} />;
   }
 
   if (error?.status === 401) {
@@ -44,7 +44,7 @@ const NewProductPage = () => {
   }
 
   return (
-    <Page title="What are you thinking...">
+    <Page title="Subir producto">
       <div className="newProductPage bordered">
         <div className="left">
           <Photo />
@@ -52,8 +52,8 @@ const NewProductPage = () => {
         <div className="right">
           <form onSubmit={handleSubmit}>
             <Textarea
-              className="newTweetPage-textarea"
-              placeholder="Hey! What's up!"
+              className="newProductPage-textarea"
+              placeholder=""
               value={content}
               onChange={handleChange}
               maxLength={MAX_CHARACTERS}
@@ -66,7 +66,7 @@ const NewProductPage = () => {
                 variant="primary"
                 disabled={buttonDisabled}
               >
-                Let's go!
+                + Subir
               </Button>
             </div>
           </form>

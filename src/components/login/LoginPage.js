@@ -1,10 +1,10 @@
 import { useMemo, useState, useCallback, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from 'react-router-dom'
-import T from 'prop-types'
+import { useLocation, useNavigate } from "react-router-dom";
+import T from "prop-types";
 import Button from "../button/button";
 import { login } from "../auth/service";
 import FormField from "../formField/FormField";
-import '../../assets/css/LoginPage.css'
+import "../../assets/css/LoginPage.css";
 
 function useRenders() {
   const count = useRef(1);
@@ -21,8 +21,8 @@ function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
     remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -35,11 +35,11 @@ function LoginPage({ onLogin }) {
 
   const { username, password, remember } = credentials;
 
-  const handleChange = useCallback(event => {
-    setCredentials(credentials => ({
+  const handleChange = useCallback((event) => {
+    setCredentials((credentials) => ({
       ...credentials,
       [event.target.name]:
-        event.target.type === 'checkbox'
+        event.target.type === "checkbox"
           ? event.target.checked
           : event.target.value,
     }));
@@ -47,7 +47,7 @@ function LoginPage({ onLogin }) {
 
   const resetError = () => setError(null);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       resetError();
@@ -55,7 +55,7 @@ function LoginPage({ onLogin }) {
       await login(credentials);
       setIsLoading(false);
       onLogin();
-      const from = location.state?.from?.pathname || '/';
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } catch (error) {
       setError(error);
@@ -64,13 +64,13 @@ function LoginPage({ onLogin }) {
   };
 
   const buttonDisabled = useMemo(() => {
-    console.log('calculando...');
+    console.log("calculando...");
     return !username || !password || isLoading;
   }, [username, password, isLoading]);
 
   return (
     <div className="loginPage">
-      {renders}
+      {/* {renders} */}
       <h1 className="loginPage-title">Log in to Nodepop</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
@@ -91,7 +91,7 @@ function LoginPage({ onLogin }) {
           onChange={handleChange}
           ref={ref}
         />
-        <input
+        {/* <input
           type="checkbox"
           name="remember"
           checked={remember}
@@ -106,7 +106,7 @@ function LoginPage({ onLogin }) {
         <input
           type="file"
           onChange={event => console.log(event.target.files[0])}
-        />
+        /> */}
 
         <Button
           className="loginForm-submit"

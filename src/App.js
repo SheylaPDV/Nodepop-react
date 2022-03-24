@@ -24,10 +24,10 @@ function App({ isInitiallyLogged }) {
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
         <Routes>
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/products" element={<Layout />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<ProductsPage />} />
             <Route path=":productId" element={<ProductPage />} />
-            <Route
+            <Route //protegido , no puedes acceder si no estas logeado
               path="/products/new"
               element={
                 <RequireAuth>
