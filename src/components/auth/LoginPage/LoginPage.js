@@ -6,7 +6,7 @@ import FormField from '../../common/FormField';
 import '../../../assets/css/LoginPage.css';
 import T from 'prop-types';
 
-/////////////////////////////////////////////////////////
+///////////////////////////USAR RENDIMIENTO//////////////////////////////
 
 function useRenders() {
   const count = useRef(1);
@@ -17,7 +17,7 @@ function useRenders() {
   return count.current;
 }
 
-/////////////////////////////////////////////////////////
+//////////////////////PAGINA INICIO SESION///////////////////////////////////
 
 function LoginPage({ onLogin }) {
   const renders = useRenders();
@@ -41,7 +41,7 @@ function LoginPage({ onLogin }) {
 
   const { username, password, remember } = credentials;
 
-  /////////////////////////////////////////////////////////
+  /////////////////////////MANEJAR CAMBIO////////////////////////////////
 
   const handleChange = useCallback((event) => {
     //el useCallback se usa para que esta funcion siempre sea la misma, que ocupe el mismo espacio de memoria
@@ -54,11 +54,11 @@ function LoginPage({ onLogin }) {
     }));
   }, []);
 
-  /////////////////////////////////////////////////////////
+  ////////////////////////////RESETEAR ERROR/////////////////////////////
 
   const resetError = () => setError(null);
 
-  /////////////////////////////////////////////////////////
+  ///////////////////// MANEJAR ENVIAR ////////////////////////////////////
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,14 +76,14 @@ function LoginPage({ onLogin }) {
     }
   };
 
-  /////////////////////////////////////////////////////////
+  //////////////////////BOTON DESHABILITADO///////////////////////////////////
 
   const buttonDisabled = useMemo(() => {
     console.log('calculando...');
     return !username || !password || isLoading;
   }, [username, password, isLoading]);
 
-  /////////////////////////////////////////////////////////
+  /////////////////////////JSX////////////////////////////////
 
   return (
     <div className="loginPage">

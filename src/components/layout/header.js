@@ -5,7 +5,7 @@ import '../../assets/css/header.css';
 import AuthButton from '../auth/AuthButton';
 
 // import { ReactComponent as Icon } from "../../assets/images/wp.svg";
-/////////////////////////////////////////////////////////
+/////////////////////////CABECERA////////////////////////////////
 
 function Header({ className }) {
   return (

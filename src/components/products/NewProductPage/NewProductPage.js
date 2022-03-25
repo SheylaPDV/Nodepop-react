@@ -9,7 +9,7 @@ import '../../../assets/css/NewProductPage.css';
 
 const MAX_CHARACTERS = 280;
 
-/////////////////////////////////////////////////////////
+////////////////////////////PAGINA NUEVO PRODUCTO/////////////////////////////
 
 const NewProductPage = () => {
   const navigate = useNavigate();
@@ -17,11 +17,13 @@ const NewProductPage = () => {
   const [error, setError] = useState(null);
   const [createdProduct, setCreatedProduct] = useState(null);
 
+  ////////////////////////MANEJO DE CAMBIOS////////////////////////////////
+
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////MANEJO DE ENVIO//////////////////////////////
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,12 +35,12 @@ const NewProductPage = () => {
       setError(error);
     }
   };
-  /////////////////////////////////////////////////////////
+  //////////////////////////MAX CARACTERES///////////////////////////////
 
   const characters = `${content.length} / ${MAX_CHARACTERS}`;
   const buttonDisabled = content.length < 5;
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////PRODUCTO CREADO//////////////////////////////
 
   if (createdProduct) {
     return <Navigate to={`/products/${createdProduct.id}`} />;

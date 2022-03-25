@@ -8,17 +8,17 @@ import Layout from './components/layout/layout';
 import LoginPage from './components/auth/LoginPage/LoginPage';
 import NewProductPage from './components/products/NewProductPage/NewProductPage';
 
-/////////////////////////////////////////////////////////
+////////////////////////////APP/////////////////////////////
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
-  /////////////////////////////////////////////////////////
+  /////////////////////////ENTRAR////////////////////////////////
   //ESTADOS
   const handleLogin = () => {
     setIsLogged(true);
   };
-
+  ///////////////////////////////////SALIR///////////////////////////////////////
   const handleLogout = () => {
     setIsLogged(false);
   };

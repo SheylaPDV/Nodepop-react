@@ -3,7 +3,7 @@ import Page from '../../layout/Page';
 import { Navigate, useParams } from 'react-router-dom';
 import { getProduct } from '../../service';
 
-/////////////////////////////////////////////////////////
+//////////////////////////PAGINA PRODUCTO///////////////////////////////
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class ProductPage extends React.Component {
     };
   }
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////MANEJO OBTENER PRODUCTO//////////////////////////////
 
   handleGetProduct = async () => {
     this.setState({ isLoading: true, error: null });
@@ -27,13 +27,13 @@ class ProductPage extends React.Component {
     }
   };
 
-  /////////////////////////////////////////////////////////
+  /////////////////////////////MONTAJE DE COMPONENTE////////////////////////////
 
   componentDidMount() {
     this.handleGetProduct();
   }
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////ACTUALIZAR COMPONENTE//////////////////////////////
 
   componentDidUpdate(prevProps, prevState) {
     console.log('old', prevProps, prevState);
@@ -43,13 +43,13 @@ class ProductPage extends React.Component {
     }
   }
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////DESMONTAR COMPONENTE//////////////////////////////
 
   componentWillUnmount() {
     console.log('unmont');
   }
 
-  /////////////////////////////////////////////////////////
+  ///////////////////////////RENDERIZAR//////////////////////////////
 
   render() {
     const { product, error, isLoading } = this.state;
@@ -71,7 +71,7 @@ class ProductPage extends React.Component {
   }
 }
 
-/////////////////////////////////////////////////////////
+//////////////////////////FUNCION PAGINA DE PRODUCTO///////////////////////////////
 
 const ProductPageFunction = () => {
   const ref = useRef(null);

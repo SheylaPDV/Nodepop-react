@@ -3,12 +3,12 @@ import Button from '../common/button.js';
 import { logout } from './service';
 import { useAuth } from './context';
 
-/////////////////////////////////////////////////////////
+///////////////////////////AUTORIZACION DE BOTON//////////////////////////////
 
 function AuthButton({ className }) {
   const { isLogged, handleLogout: onLogout } = useAuth();
 
-  /////////////////////////////////////////////////////////
+  /////////////////////////MANEJO CIERRE DE SESION////////////////////////////////
 
   const handleLogoutClick = async () => {
     await logout();

@@ -8,7 +8,7 @@ import '../../../assets/css/ProductsPage.css';
 import styles from './ProductsPage.module.css';
 import { useProducts } from '../../auth/context';
 
-/////////////////////////////////////////////////////////
+////////////////////////////LISTA VACIA PARA CREAR PRODUCTO/////////////////////////////
 
 const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
@@ -19,7 +19,7 @@ const EmptyList = () => (
   </div>
 );
 
-//////////////////////////////////////////////////////////////
+///////////////////////////////PAGINA PRODUCTOS///////////////////////////////
 
 const ProductsPage = () => {
   const products = useProducts();

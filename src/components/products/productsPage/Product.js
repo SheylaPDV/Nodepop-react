@@ -3,7 +3,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Photo from '../../common/Photo';
 import '../../../assets/css/Product.css';
 
-/////////////////////////////////////////////////////////
+//////////////////////////PRODUCTO///////////////////////////////
 
 const Product = ({ content, updatedAt, user }) => {
   return (

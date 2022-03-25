@@ -3,7 +3,7 @@ import '../../assets/css/FormField.css';
 import { forwardRef } from 'react';
 
 // TODO: change label color on focus
-/////////////////////////////////////////////////////////
+/////////////////////////CAMPO DE FORMULARIO////////////////////////////////
 
 const FormField = forwardRef(({ className, label, ...props }, ref) => {
   return (

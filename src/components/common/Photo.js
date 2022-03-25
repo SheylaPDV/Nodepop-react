@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import unnamed from '../../assets/images/unnamed.jpg';
 import '../../assets/css/Photo.css';
 
-/////////////////////////////////////////////////////////
+///////////////////////////FOTO//////////////////////////////
 
 const Photo = ({ className, ...props }) => (
   <img

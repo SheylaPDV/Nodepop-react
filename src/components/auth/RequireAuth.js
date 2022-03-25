@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import AuthContext, { AuthContextConsumer } from './context';
 
-/////////////////////////////////////////////////////////
+/////////////////////////REQUERIR AUTORIZACION////////////////////////////////
 
 const RequireAuth = ({ isLogged, children }) => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const RequireAuth = ({ isLogged, children }) => {
   return children;
 };
 
-/////////////////////////////////////////////////////////
+//////////////////////////TEST///////////////////////////////
 
 RequireAuth.propTypes = {
   //comprobacion por consola si esas funciones reciben el dato correcto
@@ -23,7 +23,7 @@ RequireAuth.propTypes = {
   children: T.node,
 };
 
-/////////////////////////////////////////////////////////
+/////////////////////////CONECTADO REQUIERE AUTORIZACION////////////////////////////////
 
 const ConectedRequireAuth = (props) => (
   <AuthContextConsumer>

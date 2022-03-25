@@ -6,14 +6,14 @@ const AuthContext = createContext();
 export const AuthContextProvider = AuthContext.Provider;
 export const AuthContextConsumer = AuthContext.Consumer;
 
-/////////////////////////////////////////////////////////
+///////////////////////////USAR AUTORIZACION//////////////////////////////
 
 export function useAuth() {
   const auth = useContext(AuthContext);
   return auth;
 }
 
-/////////////////////////////////////////////////////////
+/////////////////////////USAR PRODUCTOS////////////////////////////////
 
 export const useProducts = () => {
   //Hooks
