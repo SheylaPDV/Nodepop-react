@@ -3,7 +3,9 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import Photo from '../../common/Photo';
 import '../../../assets/css/Product.css';
 
-const Product = ({ content, updatedAt, user}) => {
+/////////////////////////////////////////////////////////
+
+const Product = ({ content, updatedAt, user }) => {
   return (
     <article className="product bordered">
       <div className="left">
@@ -30,5 +32,7 @@ const Product = ({ content, updatedAt, user}) => {
     </article>
   );
 };
+
+/////////////////////////////////////////////////////////
 
 export default Product;

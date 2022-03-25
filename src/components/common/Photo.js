@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import unnamed from '../../assets/images/unnamed.jpg';
 import '../../assets/css/Photo.css';
 
+/////////////////////////////////////////////////////////
+
 const Photo = ({ className, ...props }) => (
   <img
     className={classNames('photo', className)}
@@ -11,5 +13,7 @@ const Photo = ({ className, ...props }) => (
     {...props}
   />
 );
+
+/////////////////////////////////////////////////////////
 
 export default Photo;

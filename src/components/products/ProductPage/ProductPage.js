@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import Page from "../../layout/Page";
-import { Navigate, useParams } from "react-router-dom";
-import { getProduct } from "../../service";
+import React, { useEffect, useRef, useState } from 'react';
+import Page from '../../layout/Page';
+import { Navigate, useParams } from 'react-router-dom';
+import { getProduct } from '../../service';
+
+/////////////////////////////////////////////////////////
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -13,6 +15,8 @@ class ProductPage extends React.Component {
     };
   }
 
+  /////////////////////////////////////////////////////////
+
   handleGetProduct = async () => {
     this.setState({ isLoading: true, error: null });
     try {
@@ -23,21 +27,29 @@ class ProductPage extends React.Component {
     }
   };
 
+  /////////////////////////////////////////////////////////
+
   componentDidMount() {
     this.handleGetProduct();
   }
 
+  /////////////////////////////////////////////////////////
+
   componentDidUpdate(prevProps, prevState) {
-    console.log("old", prevProps, prevState);
-    console.log("new", this.props, this.state);
+    console.log('old', prevProps, prevState);
+    console.log('new', this.props, this.state);
     if (prevProps.productId !== this.props.productId) {
       this.handleGetProduct();
     }
   }
 
+  /////////////////////////////////////////////////////////
+
   componentWillUnmount() {
-    console.log("unmont");
+    console.log('unmont');
   }
+
+  /////////////////////////////////////////////////////////
 
   render() {
     const { product, error, isLoading } = this.state;
@@ -53,19 +65,22 @@ class ProductPage extends React.Component {
 
     return (
       <Page title="Detalle del producto">
-        <div>{product ? JSON.stringify(product) : "Nada que mostrar"}</div>
+        <div>{product ? JSON.stringify(product) : 'Nada que mostrar'}</div>
       </Page>
     );
   }
 }
+
+/////////////////////////////////////////////////////////
 
 const ProductPageFunction = () => {
   const ref = useRef(null);
   const { productId } = useParams();
 
   useEffect(() => {
-    console.log("ref", ref.current);
+    console.log('ref', ref.current);
   }, []);
+  //array de dependencias(el array vacio solo se ejecuta en el primer render, si le meto un valor, de ejecuta cada vez que cambia ese valor)
 
   return <ProductPage ref={ref} productId={productId} />;
 };

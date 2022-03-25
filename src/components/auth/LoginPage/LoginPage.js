@@ -1,11 +1,12 @@
-import { useMemo, useState, useCallback, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import Button from "../../common/button";
-import { login } from "../service";
-import FormField from "../../common/FormField";
-import "../../../assets/css/LoginPage.css";
-import T from "prop-types";
+import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Button from '../../common/button';
+import { login } from '../service';
+import FormField from '../../common/FormField';
+import '../../../assets/css/LoginPage.css';
+import T from 'prop-types';
 
+/////////////////////////////////////////////////////////
 
 function useRenders() {
   const count = useRef(1);
@@ -16,14 +17,16 @@ function useRenders() {
   return count.current;
 }
 
+/////////////////////////////////////////////////////////
+
 function LoginPage({ onLogin }) {
   const renders = useRenders();
   const ref = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -34,19 +37,28 @@ function LoginPage({ onLogin }) {
     ref.current.focus();
   }, []);
 
+  /////////////////////////////////////////////////////////
+
   const { username, password, remember } = credentials;
 
+  /////////////////////////////////////////////////////////
+
   const handleChange = useCallback((event) => {
+    //el useCallback se usa para que esta funcion siempre sea la misma, que ocupe el mismo espacio de memoria
     setCredentials((credentials) => ({
       ...credentials,
       [event.target.name]:
-        event.target.type === "checkbox"
+        event.target.type === 'checkbox'
           ? event.target.checked
           : event.target.value,
     }));
   }, []);
 
+  /////////////////////////////////////////////////////////
+
   const resetError = () => setError(null);
+
+  /////////////////////////////////////////////////////////
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,7 +68,7 @@ function LoginPage({ onLogin }) {
       await login(credentials);
       setIsLoading(false);
       onLogin();
-      const from = location.state?.from?.pathname || "/";
+      const from = location.state?.from?.pathname || '/';
       navigate(from, { replace: true });
     } catch (error) {
       setError(error);
@@ -64,10 +76,14 @@ function LoginPage({ onLogin }) {
     }
   };
 
+  /////////////////////////////////////////////////////////
+
   const buttonDisabled = useMemo(() => {
-    console.log("calculando...");
+    console.log('calculando...');
     return !username || !password || isLoading;
   }, [username, password, isLoading]);
+
+  /////////////////////////////////////////////////////////
 
   return (
     <div className="loginPage">

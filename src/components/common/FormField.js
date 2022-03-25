@@ -1,13 +1,13 @@
-import classNames from "classnames";
-import "../../assets/css/FormField.css";
-
-import { forwardRef } from "react";
+import classNames from 'classnames';
+import '../../assets/css/FormField.css';
+import { forwardRef } from 'react';
 
 // TODO: change label color on focus
+/////////////////////////////////////////////////////////
 
 const FormField = forwardRef(({ className, label, ...props }, ref) => {
   return (
-    <div className={classNames("formField", className)}>
+    <div className={classNames('formField', className)}>
       <label className="formField-label">
         <span>{label}</span>
         <input

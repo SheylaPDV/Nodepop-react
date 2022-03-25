@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
-import { getLatestProducts } from "../../service";
-import { Link } from "react-router-dom";
-import Page from "../../layout/Page";
-import Button from "../../common/button";
-import Product from "./Product"
-import "../../../assets/css/ProductsPage.css";
-import styles from "./ProductsPage.module.css";
+import { useEffect, useState } from 'react';
+import { getLatestProducts } from '../../service';
+import { Link } from 'react-router-dom';
+import Page from '../../layout/Page';
+import Button from '../../common/button';
+import Product from './Product';
+import '../../../assets/css/ProductsPage.css';
+import styles from './ProductsPage.module.css';
+import { useProducts } from '../../auth/context';
 
+/////////////////////////////////////////////////////////
 
 const EmptyList = () => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ textAlign: 'center' }}>
     <p>Sube el primer producto!</p>
     <Button as={Link} to="/products/new" variant="primary">
       Producto
@@ -17,21 +19,7 @@ const EmptyList = () => (
   </div>
 );
 
-const useProducts = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const execute = async () => {
-      const products = await getLatestProducts();
-      setProducts(products);
-    };
-    execute();
-
-    return () => {};
-  }, []);
-
-  return products;
-};
+//////////////////////////////////////////////////////////////
 
 const ProductsPage = () => {
   const products = useProducts();
@@ -56,5 +44,7 @@ const ProductsPage = () => {
     </Page>
   );
 };
+
+/////////////////////////////////////////////////////////
 
 export default ProductsPage;

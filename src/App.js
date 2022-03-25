@@ -1,16 +1,20 @@
-import { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import RequireAuth from "./components/auth/RequireAuth";
-import ProductPage from "./components/products/ProductPage/ProductPage";
-import ProductsPage from "./components/products/productsPage/ProductsPage";
-import { AuthContextProvider } from "./components/auth/context";
-import Layout from "./components/layout/layout";
-import LoginPage from "./components/auth/LoginPage/LoginPage";
-import NewProductPage from "./components/products/NewProductPage/NewProductPage";
+import { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import RequireAuth from './components/auth/RequireAuth';
+import ProductPage from './components/products/ProductPage/ProductPage';
+import ProductsPage from './components/products/productsPage/ProductsPage';
+import { AuthContextProvider } from './components/auth/context';
+import Layout from './components/layout/layout';
+import LoginPage from './components/auth/LoginPage/LoginPage';
+import NewProductPage from './components/products/NewProductPage/NewProductPage';
+
+/////////////////////////////////////////////////////////
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
+  /////////////////////////////////////////////////////////
+  //ESTADOS
   const handleLogin = () => {
     setIsLogged(true);
   };
@@ -18,6 +22,8 @@ function App({ isInitiallyLogged }) {
   const handleLogout = () => {
     setIsLogged(false);
   };
+
+  /////////////////////////////////////////////////////////
 
   return (
     <div className="App">
@@ -44,5 +50,7 @@ function App({ isInitiallyLogged }) {
     </div>
   );
 }
+
+/////////////////////////////////////////////////////////
 
 export default App;
