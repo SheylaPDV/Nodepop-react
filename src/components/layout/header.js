@@ -2,7 +2,8 @@ import classNames from "classnames";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/unnamed.jpg";
 import "../../assets/css/header.css";
-import AuthButton from "../button/AuthButton";
+import AuthButton from "../auth/AuthButton";
+
 // import { ReactComponent as Icon } from "../../assets/images/wp.svg";
 
 function Header({ className }) {
@@ -20,7 +21,7 @@ function Header({ className }) {
           // className={({ isActive }) => (isActive ? 'active' : '')}
           style={({ isActive }) => (isActive ? { color: "green" } : null)}
         >
-          New Product
+          Nuevo producto
         </NavLink>
         <NavLink
           to="/products"
@@ -28,7 +29,7 @@ function Header({ className }) {
           style={({ isActive }) => (isActive ? { color: "green" } : null)}
           end
         >
-          See all products
+         Todos los productos
         </NavLink>
         <AuthButton className="header-button" />
       </nav>

@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import Button from './button.js';
-
-import { logout } from '../auth/service';
-import { useAuth } from '../auth/context';
+import Button from '../common/button.js';
+import { logout } from './service';
+import { useAuth } from './context';
 
 function AuthButton({ className }) {
   const { isLogged, handleLogout: onLogout } = useAuth();
@@ -14,11 +13,11 @@ function AuthButton({ className }) {
 
   return isLogged ? (
     <Button className={className} onClick={handleLogoutClick}>
-      Logout
+      Cerrar
     </Button>
   ) : (
     <Button as={Link} to="/login" variant="primary" className={className}>
-      Login
+      Iniciar
     </Button>
   );
 }

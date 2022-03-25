@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getLatestProducts } from "./service.js";
+import { getLatestProducts } from "../../service";
 import { Link } from "react-router-dom";
-import Page from "../layout/Page";
-import Button from "../button/button.js";
-import Product from "../productsPage/Product";
-import "../../assets/css/ProductsPage.css";
+import Page from "../../layout/Page";
+import Button from "../../common/button";
+import Product from "./Product"
+import "../../../assets/css/ProductsPage.css";
 import styles from "./ProductsPage.module.css";
 
 
 const EmptyList = () => (
   <div style={{ textAlign: "center" }}>
-    <p>Be the first product!</p>
+    <p>Sube el primer producto!</p>
     <Button as={Link} to="/products/new" variant="primary">
-      Tweet
+      Producto
     </Button>
   </div>
 );
@@ -37,7 +37,7 @@ const ProductsPage = () => {
   const products = useProducts();
 
   return (
-    <Page title="What's going on...">
+    <Page title="¿Qué estás buscando hoy?">
       <div className={styles.productsPage}>
         {products.length ? (
           <ul>

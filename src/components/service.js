@@ -1,9 +1,9 @@
-import client from "../../api/client";
+import client from "../api/client";
 // llamadas al api
-const productsBaseUrl = "/api";
+const productsBaseUrl = "/api/products";
 
 export const getLatestProducts = () => {
-  const url = `${productsBaseUrl}`;
+  const url = `${productsBaseUrl}?_expand=user&_embed=likes&_sort=updatedAt&_order=desc`;
   return client.get(url);
 };
 

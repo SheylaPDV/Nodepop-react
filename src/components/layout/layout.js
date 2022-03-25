@@ -1,4 +1,4 @@
-import Header from "../header/header.js";
+import Header from "./header";
 import '../../assets/css/layout.css';
 import { Outlet } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ function Layout() {
       <main className="layout-main bordered">
         <Outlet />
       </main>
-      <footer className="layout-footer bordered">© 2022 Keepcoding</footer>
+      <footer className="layout-footer bordered">© 2022 Sheyla Pérez</footer>
     </div>
   );
 }

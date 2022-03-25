@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "./components/login/LoginPage";
 import RequireAuth from "./components/auth/RequireAuth";
-import NewProductPage from "./components/createProduct/NewProductPage";
-import ProductPage from "./components/ProductPage/ProductPage";
-import ProductsPage from "./components/productsPage/ProductsPage";
+import ProductPage from "./components/products/ProductPage/ProductPage";
+import ProductsPage from "./components/products/productsPage/ProductsPage";
 import { AuthContextProvider } from "./components/auth/context";
 import Layout from "./components/layout/layout";
+import LoginPage from "./components/auth/LoginPage/LoginPage";
+import NewProductPage from "./components/products/NewProductPage/NewProductPage";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -24,7 +24,7 @@ function App({ isInitiallyLogged }) {
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
         <Routes>
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/" element={<Layout />}>
+          <Route path="/products" element={<Layout />}>
             <Route index element={<ProductsPage />} />
             <Route path=":productId" element={<ProductPage />} />
             <Route //protegido , no puedes acceder si no estas logeado

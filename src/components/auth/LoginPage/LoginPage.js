@@ -1,10 +1,11 @@
 import { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../common/button";
+import { login } from "../service";
+import FormField from "../../common/FormField";
+import "../../../assets/css/LoginPage.css";
 import T from "prop-types";
-import Button from "../button/button";
-import { login } from "../auth/service";
-import FormField from "../formField/FormField";
-import "../../assets/css/LoginPage.css";
+
 
 function useRenders() {
   const count = useRef(1);
@@ -70,7 +71,7 @@ function LoginPage({ onLogin }) {
 
   return (
     <div className="loginPage">
-      {/* {renders} */}
+      {renders}
       <h1 className="loginPage-title">Log in to Nodepop</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField

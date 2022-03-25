@@ -1,15 +1,13 @@
-import Page from '../layout/Page'
-import Photo from '../photo/Photo'
-import Textarea from '../textArea/TextArea'
-import Button from '../button/button'
-import { useState } from 'react';
-import { createProduct } from '../productsPage/service'
-import { Navigate, useNavigate } from 'react-router-dom'
-import '../../assets/css/NewProductPage.css'
-
+import Page from "../../layout/Page";
+import Photo from "../../../assets/css/Photo.css";
+import Textarea from "../../common/TextArea";
+import Button from "../../common/button";
+import { useState } from "react";
+import { createProduct } from "../../service";
+import { Navigate, useNavigate } from "react-router-dom";
+import "../../../assets/css/NewProductPage.css";
 
 const MAX_CHARACTERS = 280;
-
 
 const NewProductPage = () => {
   const navigate = useNavigate();
@@ -51,9 +49,21 @@ const NewProductPage = () => {
         </div>
         <div className="right">
           <form onSubmit={handleSubmit}>
+            {/* <span className="newProductPage-textarea" text='nombre'> Nombre: </span>
+              <input placeholder='Nombre del producto' onChange={handleChange}></input>
+            <span>Estado</span>
+            <select onChange={event => console.log(event)}>
+              <option value="Compra">Compra</option>
+              <option value="Venta">Venta</option>
+            </select>
+            <span> Tags: </span>
+              <input placeholder='Tags' onChange={handleChange}></input>
+            <span> Precio: </span>
+              <input placeholder='Precio' onChange={handleChange}></input>
+            */}
             <Textarea
               className="newProductPage-textarea"
-              placeholder=""
+              placeholder="Escribe aqui el detalle del producto.."
               value={content}
               onChange={handleChange}
               maxLength={MAX_CHARACTERS}
