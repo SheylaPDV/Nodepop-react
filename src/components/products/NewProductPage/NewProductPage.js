@@ -56,7 +56,7 @@ const NewProductPage = () => {
   }
 
   return (
-    <Page title="Subir producto">
+    <Page title="Upload product">
       <div className="newProductPage bordered">
         <div className="left"></div>
         <div className="right">
