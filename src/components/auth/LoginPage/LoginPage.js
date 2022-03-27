@@ -6,7 +6,7 @@ import FormField from '../../common/FormField';
 import '../../../assets/css/LoginPage.css';
 import T from 'prop-types';
 
-///////////////////////////USAR RENDIMIENTO//////////////////////////////
+///////////////////////////TE DICE CUANTAS VECES SE RENDERIZA ALGO(SE ALMACENA EN CURRENT QUE ESTA EN EL OBJETO QUE DEVUELVE USEREF)//////////////////////////////
 
 function useRenders() {
   const count = useRef(1);
@@ -25,7 +25,7 @@ function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: '',
     remember: false,
   });
@@ -39,7 +39,7 @@ function LoginPage({ onLogin }) {
 
   /////////////////////////////////////////////////////////
 
-  const { username, password, remember } = credentials;
+  const { email, password, remember } = credentials;
 
   /////////////////////////MANEJAR CAMBIO////////////////////////////////
 
@@ -68,7 +68,7 @@ function LoginPage({ onLogin }) {
       await login(credentials);
       setIsLoading(false);
       onLogin();
-      const from = location.state?.from?.pathname || '/';
+      const from = location.state?.from?.pathname || '/products';
       navigate(from, { replace: true });
     } catch (error) {
       setError(error);
@@ -77,11 +77,12 @@ function LoginPage({ onLogin }) {
   };
 
   //////////////////////BOTON DESHABILITADO///////////////////////////////////
+  //...... (con use memo, una especie de memoria cache, si te pasan los mismos datos no lo recalcula de nuevo)
 
   const buttonDisabled = useMemo(() => {
     console.log('calculando...');
-    return !username || !password || isLoading;
-  }, [username, password, isLoading]);
+    return !email || !password || isLoading;
+  }, [email, password, isLoading]);
 
   /////////////////////////JSX////////////////////////////////
 
@@ -92,10 +93,10 @@ function LoginPage({ onLogin }) {
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
           type="text"
-          name="username"
-          label="phone, email or username"
+          name="email"
+          label="email"
           className="loginForm-field"
-          value={username}
+          value={credentials.email}
           onChange={handleChange}
           // ref={ref}
         />
@@ -108,22 +109,24 @@ function LoginPage({ onLogin }) {
           onChange={handleChange}
           ref={ref}
         />
-        {/* <input
+        <input
           type="checkbox"
           name="remember"
           checked={remember}
           value="remember"
           onChange={handleChange}
         />
-        <select value="2" onChange={event => console.log(event)}>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <input
-          type="file"
-          onChange={event => console.log(event.target.files[0])}
-        /> */}
+        <label>Recordar contraseña</label>
+
+        {/* // <select value="2" onChange={event => console.log(event)}>
+        //   <option value="1">Option 1</option>
+        //   <option value="2">Option 2</option>
+        //   <option value="3">Option 3</option>
+        // </select>
+        // <input */}
+        {/* //   type="file"
+        //   onChange={event => console.log(event.target.files[0])}
+        // /> */}
 
         <Button
           className="loginForm-submit"

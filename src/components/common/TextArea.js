@@ -19,7 +19,7 @@ const Textarea = ({ className, ...props }) => {
     }
   });
 
-  console.log('render ref', rendersRef.current);
+  //console.log('render ref', rendersRef.current);
 
   ////////////////////////////////////////////////////////////////////////
 

@@ -7,7 +7,7 @@ import storage from '../../utils/storage';
 ///////////////////////////////////INCIAR SESION//////////////////////////////////////
 
 export const login = ({ remember, ...credentials }) => {
-  return client.post('/auth/login', credentials).then(({ accessToken }) => {
+  return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
     setAuthorizationHeader(accessToken);
     storage.set('auth', accessToken);
   });

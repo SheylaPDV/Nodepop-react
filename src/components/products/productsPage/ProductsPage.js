@@ -14,7 +14,7 @@ const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
     <p>Sube el primer producto!</p>
     <Button as={Link} to="/products/new" variant="primary">
-      Producto
+      Añadir producto
     </Button>
   </div>
 );
