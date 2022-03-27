@@ -1,24 +1,16 @@
 import client from '../api/client';
-// llamadas al api
-/////////////////////////////////////////////////////////
 
 const productsBaseUrl = '/api/v1/adverts';
-
-/////////////////////////OBTENER TODOS LOS PRODUCTOS////////////////////////////////
 
 export const getLatestProducts = () => {
   const url = `${productsBaseUrl}`;
   return client.get(url);
 };
 
-//////////////////////////OBTENER PRODUCTO///////////////////////////////
-
 export const getProduct = (productId) => {
   const url = `${productsBaseUrl}/${productId}`;
   return client.get(url);
 };
-
-///////////////////////////CREAR PRODUCTO//////////////////////////////
 
 export const createProduct = (product) => {
   const url = `${productsBaseUrl}`;
@@ -27,6 +19,7 @@ export const createProduct = (product) => {
   bodyFormData.append('sale', product.sale);
   bodyFormData.append('price', product.price);
   bodyFormData.append('tags', product.tags);
+  bodyFormData.append('photo', product.photo);
 
   const headers = {
     'Content-Type': 'multipart/form-data',

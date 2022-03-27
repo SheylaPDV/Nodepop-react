@@ -2,6 +2,8 @@
   border-bottom-width: 1px;
   cursor: pointer;
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   padding: 10px 15px 0 15px;
   transition: background-color 0.2s;
 }
@@ -10,28 +12,17 @@
   background-color: rgba(0, 0, 0, 0.03);
 }
 
-.product-header {
-  color: rgb(101, 119, 134);
-  margin-bottom: 2px;
-  display: flex;
-}
-
 .product-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 20px;
   max-width: 425px;
 }
 
 .product-name {
   color: rgb(20, 23, 26);
   font-weight: bold;
-}
-
-.product-username {
-  margin-left: 5px;
-}
-
-.product-separator {
-  padding: 0 5px;
+  border: solid rgba(236, 227, 227, 0.842) 0.2px;
+  display: flex;
+  flex-direction: column;
 }

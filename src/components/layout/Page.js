@@ -1,7 +1,5 @@
 import { Fragment } from 'react';
 
-////////////////////////PAGINA/////////////////////////////////
-
 function Page({ title, children }) {
   return (
     <Fragment>
@@ -10,8 +8,5 @@ function Page({ title, children }) {
     </Fragment>
   );
 }
-
-// <Fragment></Fragment>
-// <></>
 
 export default Page;

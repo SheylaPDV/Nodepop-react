@@ -4,8 +4,6 @@ import client, {
 } from '../../api/client';
 import storage from '../../utils/storage';
 
-///////////////////////////////////INCIAR SESION//////////////////////////////////////
-
 export const login = ({ remember, ...credentials }) => {
   return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
     setAuthorizationHeader(accessToken);
@@ -13,12 +11,9 @@ export const login = ({ remember, ...credentials }) => {
   });
 };
 
-// export const signUp = ({ remember, ...credentials }) => {
-//   return client.post('/api/auth/signup', credentials).then(({accessToken}) => {
-//     storage.set('auth',accessToken);
-//   })
-// };
-/////////////////////////////////////////CERRAR SESION/////////////////////////////////////////
+export const signUp = ({ remember, ...credentials }) => {
+  return client.post('/api/auth/signup', credentials);
+};
 
 export const logout = () => {
   return Promise.resolve().then(() => {

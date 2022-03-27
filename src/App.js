@@ -4,32 +4,31 @@ import RequireAuth from './components/auth/RequireAuth';
 import ProductPage from './components/products/ProductPage/ProductPage';
 import ProductsPage from './components/products/productsPage/ProductsPage';
 import { AuthContextProvider } from './components/auth/context';
-import Layout from './components/layout/layout';
+import Layout from './components/layout/Layout';
 import LoginPage from './components/auth/LoginPage/LoginPage';
 import NewProductPage from './components/products/NewProductPage/NewProductPage';
-
-////////////////////////////APP/////////////////////////////
+import CreateUser from './components/auth/LoginPage/CreateUser';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
-  /////////////////////////ENTRAR////////////////////////////////
   //ESTADOS
   const handleLogin = () => {
     setIsLogged(true);
   };
-  ///////////////////////////////////SALIR///////////////////////////////////////
   const handleLogout = () => {
     setIsLogged(false);
   };
-
-  /////////////////////////////////////////////////////////
 
   return (
     <div className="App">
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
         <Routes>
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+          <Route
+            path="/signup"
+            element={<CreateUser onLogin={handleLogin} />}
+          />
           <Route path="/products" element={<Layout />}>
             <Route index element={<ProductsPage />} />
             <Route path=":productId" element={<ProductPage />} />
@@ -50,7 +49,5 @@ function App({ isInitiallyLogged }) {
     </div>
   );
 }
-
-/////////////////////////////////////////////////////////
 
 export default App;

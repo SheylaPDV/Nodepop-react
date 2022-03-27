@@ -3,20 +3,27 @@
   padding: 10px 15px 0 15px;
 }
 
-.newProductPage-textarea {
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgb(230, 236, 240);
-}
-
 .newProductPage-footer {
   align-items: center;
   display: flex;
 }
 
-.newProductPage-characters {
-  color: rgb(29, 161, 242);
-}
-
 .newProductPage-submit {
   margin-left: auto;
+}
+.inputs-newProducts {
+  background-color: rgba(223, 245, 233, 0.712);
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-color: rgb(46, 219, 167);
+  border-radius: 12px;
+  color: rgb(42, 190, 99);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+  cursor: pointer;
+  height: 30px;
+  outline-style: none;
+  padding: 2px 10px 5px 10px;
+  width: 100%;
 }

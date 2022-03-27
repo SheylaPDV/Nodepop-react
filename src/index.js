@@ -6,12 +6,8 @@ import storage from './utils/storage';
 import { setAuthorizationHeader } from './api/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-/////////////////////////////////////////////////////////
-
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken);
-
-/////////////////////////////////////////////////////////
 
 ReactDOM.render(
   <React.StrictMode>

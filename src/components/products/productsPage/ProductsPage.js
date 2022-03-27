@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { getLatestProducts } from '../../service';
 import { Link } from 'react-router-dom';
 import Page from '../../layout/Page';
 import Button from '../../common/button';
@@ -8,24 +6,20 @@ import '../../../assets/css/ProductsPage.css';
 import styles from './ProductsPage.module.css';
 import { useProducts } from '../../auth/context';
 
-////////////////////////////LISTA VACIA PARA CREAR PRODUCTO/////////////////////////////
-
 const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
-    <p>Sube el primer producto!</p>
+    <p>Upload the first product!</p>
     <Button as={Link} to="/products/new" variant="primary">
-      Añadir producto
+      Add product
     </Button>
   </div>
 );
-
-///////////////////////////////PAGINA PRODUCTOS///////////////////////////////
 
 const ProductsPage = () => {
   const products = useProducts();
 
   return (
-    <Page title="¿Qué estás buscando hoy?">
+    <Page title="What are you looking for today?">
       <div className={styles.productsPage}>
         {products.length ? (
           <ul>
@@ -44,7 +38,5 @@ const ProductsPage = () => {
     </Page>
   );
 };
-
-/////////////////////////////////////////////////////////
 
 export default ProductsPage;

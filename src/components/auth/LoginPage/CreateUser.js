@@ -1,29 +1,17 @@
-import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import T from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../common/button';
-import { login } from '../service';
 import FormField from '../../common/FormField';
-import '../../../assets/css/LoginPage.css';
-import T from 'prop-types';
+import { signUp } from '../service';
 
-function useRenders() {
-  const count = useRef(1);
-
-  useEffect(() => {
-    count.current++;
-  });
-  return count.current;
-}
-
-function LoginPage({ onLogin }) {
-  const renders = useRenders();
+function CreateUser({ onLogin }) {
   const ref = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
-    remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,15 +21,12 @@ function LoginPage({ onLogin }) {
     ref.current.focus();
   }, []);
 
-  const { email, password, remember } = credentials;
+  const { email, password } = credentials;
 
   const handleChange = useCallback((event) => {
     setCredentials((credentials) => ({
       ...credentials,
-      [event.target.name]:
-        event.target.type === 'checkbox'
-          ? event.target.checked
-          : event.target.value,
+      [event.target.name]: event.target.value,
     }));
   }, []);
 
@@ -51,9 +36,9 @@ function LoginPage({ onLogin }) {
     event.preventDefault();
     try {
       resetError();
-      setIsLoading(true);
-      await login(credentials);
       setIsLoading(false);
+      await signUp(credentials);
+      setIsLoading(true);
       onLogin();
       const from = location.state?.from?.pathname || '/products';
       navigate(from, { replace: true });
@@ -70,8 +55,7 @@ function LoginPage({ onLogin }) {
 
   return (
     <div className="loginPage">
-      {renders}
-      <h1 className="loginPage-title">Log in to Nodepop</h1>
+      <h1 className="loginPage-title">Create user</h1>
       <form className="loginForm" onSubmit={handleSubmit}>
         <FormField
           type="text"
@@ -80,24 +64,17 @@ function LoginPage({ onLogin }) {
           className="loginForm-field"
           value={credentials.email}
           onChange={handleChange}
+          // ref={ref}
         />
         <FormField
           type="password"
           name="password"
           label="password"
           className="loginForm-field"
-          value={password}
+          value={credentials.password}
           onChange={handleChange}
           ref={ref}
         />
-        <input
-          type="checkbox"
-          name="remember"
-          checked={remember}
-          value="remember"
-          onChange={handleChange}
-        />
-        <label>Recordar contraseña</label>
 
         <Button
           className="loginForm-submit"
@@ -117,8 +94,8 @@ function LoginPage({ onLogin }) {
   );
 }
 
-LoginPage.propTypes = {
+CreateUser.propTypes = {
   onLogin: T.func,
 };
 
-export default LoginPage;
+export default CreateUser;

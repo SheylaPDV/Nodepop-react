@@ -1,8 +1,6 @@
-import Header from './header';
+import Header from './Header';
 import '../../assets/css/layout.css';
 import { Outlet } from 'react-router-dom';
-
-/////////////////////////DISEÑO////////////////////////////////
 
 function Layout() {
   return (
@@ -15,6 +13,5 @@ function Layout() {
     </div>
   );
 }
-/////////////////////////////////////////////////////////
 
 export default Layout;

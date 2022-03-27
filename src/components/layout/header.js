@@ -3,9 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/unnamed.jpg';
 import '../../assets/css/header.css';
 import AuthButton from '../auth/AuthButton';
-
-// import { ReactComponent as Icon } from "../../assets/images/wp.svg";
-/////////////////////////CABECERA////////////////////////////////
+import Button from '../common/button';
 
 function Header({ className }) {
   return (
@@ -19,18 +17,23 @@ function Header({ className }) {
       <nav className="header-nav">
         <NavLink
           to="/products/new"
-          // className={({ isActive }) => (isActive ? 'active' : '')}
           style={({ isActive }) => (isActive ? { color: 'green' } : null)}
         >
-          Nuevo producto
+          <Button>New product</Button>
         </NavLink>
         <NavLink
           to="/products"
-          // className={({ isActive }) => (isActive ? 'active' : '')}
           style={({ isActive }) => (isActive ? { color: 'green' } : null)}
           end
         >
-          Todos los productos
+          <Button>All products</Button>
+        </NavLink>
+        <NavLink
+          to="/signup"
+          style={({ isActive }) => (isActive ? { color: 'green' } : null)}
+          end
+        >
+          <Button>SignUp</Button>
         </NavLink>
         <AuthButton className="header-button" />
       </nav>

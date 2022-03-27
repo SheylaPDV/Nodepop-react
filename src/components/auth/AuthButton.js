@@ -3,31 +3,23 @@ import Button from '../common/button.js';
 import { logout } from './service';
 import { useAuth } from './context';
 
-///////////////////////////AUTORIZACION DE BOTON//////////////////////////////
-
 function AuthButton({ className }) {
   const { isLogged, handleLogout: onLogout } = useAuth();
-
-  /////////////////////////MANEJO CIERRE DE SESION////////////////////////////////
 
   const handleLogoutClick = async () => {
     await logout();
     onLogout();
   };
 
-  /////////////////////////////////////////////////////////
-
   return isLogged ? (
     <Button className={className} onClick={handleLogoutClick}>
-      Cerrar
+      Logout
     </Button>
   ) : (
     <Button as={Link} to="/login" variant="primary" className={className}>
-      Iniciar
+      Login
     </Button>
   );
 }
-
-/////////////////////////////////////////////////////////
 
 export default AuthButton;

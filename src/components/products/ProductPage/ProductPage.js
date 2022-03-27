@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Page from '../../layout/Page';
 import { Navigate, useParams } from 'react-router-dom';
 import { getProduct } from '../../service';
-
-//////////////////////////PAGINA PRODUCTO///////////////////////////////
+import '../../../assets/css/Product.css';
+import Photo from '../../common/Photo';
 
 class ProductPage extends React.Component {
   constructor(props) {
@@ -13,9 +13,8 @@ class ProductPage extends React.Component {
       error: null,
       isLoading: false,
     };
+    this.handleGetProduct();
   }
-
-  ///////////////////////////MANEJO OBTENER PRODUCTO//////////////////////////////
 
   handleGetProduct = async () => {
     this.setState({ isLoading: true, error: null });
@@ -27,35 +26,16 @@ class ProductPage extends React.Component {
     }
   };
 
-  /////////////////////////////MONTAJE DE COMPONENTE////////////////////////////
-
-  componentDidMount() {
-    this.handleGetProduct();
-  }
-
-  ///////////////////////////ACTUALIZAR COMPONENTE//////////////////////////////
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('old', prevProps, prevState);
-    console.log('new', this.props, this.state);
+  componentDidUpdate(prevProps) {
     if (prevProps.productId !== this.props.productId) {
       this.handleGetProduct();
     }
   }
 
-  ///////////////////////////DESMONTAR COMPONENTE//////////////////////////////
-
-  componentWillUnmount() {
-    console.log('unmont');
-  }
-
-  ///////////////////////////RENDERIZAR//////////////////////////////
-
   render() {
     const { product, error, isLoading } = this.state;
 
     if (error?.status === 401) {
-      //solo lo evaluo cuando no sea null (para eso sirve la interrogacion)
       return <Navigate to="/login" />;
     }
 
@@ -65,13 +45,26 @@ class ProductPage extends React.Component {
 
     return (
       <Page title="Detalle del producto">
-        <div>{product ? JSON.stringify(product) : 'Nada que mostrar'}</div>
+        <div className="product">
+          {product ? (
+            <div>
+              <Photo />
+              <div className="product-name">{product.photo}</div>
+              <div className="product-name">Name: {product.name}</div>
+              <div className="product-name">
+                Sale: {product.sale ? 'Se vende' : 'Se compra'}
+              </div>
+              <div className="product-name">Price: {product.price}</div>
+              <div className="product-name">Tags: {product.tags}</div>
+            </div>
+          ) : (
+            <div>Nothing to show</div>
+          )}
+        </div>
       </Page>
     );
   }
 }
-
-//////////////////////////FUNCION PAGINA DE PRODUCTO///////////////////////////////
 
 const ProductPageFunction = () => {
   const ref = useRef(null);
@@ -80,26 +73,8 @@ const ProductPageFunction = () => {
   useEffect(() => {
     console.log('ref', ref.current);
   }, []);
-  //array de dependencias(el array vacio solo se ejecuta en el primer render, si le meto un valor, de ejecuta cada vez que cambia ese valor)
 
   return <ProductPage ref={ref} productId={productId} />;
 };
 
 export default ProductPageFunction;
-// const ProductPageFunction = () => {
-//   const [product, setProduct] = useState(null)
-//   // const ref = useRef(null);
-//   const { productId } = useParams();
-
-//   useEffect(() => {
-//     getProduct(productId).then(product => setProduct(product))
-//     return () => {
-//       console.log('unmmonted');
-//     }
-
-//   }, [productId]);
-
-//   return  <Page title="Product detail">
-//   <div>{product ? JSON.stringify(product) : "Nothing to show"}</div>
-// </Page>;
-// };
