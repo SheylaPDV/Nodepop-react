@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import RequireAuth from './components/auth/RequireAuth';
-import ProductPage from './components/products/ProductPage/ProductPage';
-import ProductsPage from './components/products/productsPage/ProductsPage';
-import { AuthContextProvider } from './components/auth/context';
-import Layout from './components/layout/Layout';
-import LoginPage from './components/auth/LoginPage/LoginPage';
-import NewProductPage from './components/products/NewProductPage/NewProductPage';
-import CreateUser from './components/auth/LoginPage/CreateUser';
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import RequireAuth from "./components/auth/RequireAuth";
+import AdvertPage from "./components/adverts/AdvertPage/AdverttPage";
+import AdvertsPage from "./components/adverts/advertsPage/AdvertsPage";
+import { AuthContextProvider } from "./components/auth/context";
+import Layout from "./components/layout/layout";
+import LoginPage from "./components/auth/LoginPage/LoginPage";
+import NewAdvertPage from "./components/adverts/NewAdvertPage/NewAdvertPage";
+import NotFoundPage from "./NotFoundPage";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -24,25 +24,25 @@ function App({ isInitiallyLogged }) {
     <div className="App">
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
         <Routes>
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route
-            path="/signup"
-            element={<CreateUser onLogin={handleLogin} />}
-          />
-          <Route path="/products" element={<Layout />}>
-            <Route index element={<ProductsPage />} />
-            <Route path=":productId" element={<ProductPage />} />
-            <Route //protegido , no puedes acceder si no estas logeado
-              path="/products/new"
-              element={
-                <RequireAuth>
-                  <NewProductPage />
-                </RequireAuth>
-              }
-            />
+            path="/adverts"
+            element={
+              <RequireAuth>
+                <Layout />
+              </RequireAuth>
+            }
+          >
+            <Route index element={<AdvertsPage />} />
+            <Route path="new" element={<NewAdvertPage />} />
+            <Route path=":advertId" element={<AdvertPage />} />
           </Route>
-          <Route path="/" element={<Navigate to="/products" />} />
-          <Route path="/404" element={<div>404 | Not Found Page</div>} />
+          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+          <Route path="/404" element={<Layout />}>
+            <Route index element={<NotFoundPage />} />
+          </Route>
+
+          <Route path="/" element={<Navigate to="/adverts" />} />
+
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </AuthContextProvider>

@@ -1,17 +1,17 @@
-.newProductPage {
+.neAdvertPage {
   display: flex;
   padding: 10px 15px 0 15px;
 }
 
-.newProductPage-footer {
+.newAdvertPage-footer {
   align-items: center;
   display: flex;
 }
 
-.newProductPage-submit {
+.newAdvertPage-submit {
   margin-left: auto;
 }
-.inputs-newProducts {
+.inputs-newAdverts {
   background-color: rgba(223, 245, 233, 0.712);
   border-bottom-style: solid;
   border-bottom-width: 2px;

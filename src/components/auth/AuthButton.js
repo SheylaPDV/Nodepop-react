@@ -1,25 +1,39 @@
-import { Link } from 'react-router-dom';
-import Button from '../common/button.js';
-import { logout } from './service';
-import { useAuth } from './context';
+import { Link, NavLink } from "react-router-dom";
+import { logout } from "./service";
+import { useAuth, AuthContextConsumer } from "./context";
+import useMutation from "../hooks/useMutation";
+import ConfirmationButton from "../common/ConfirmationButton";
+import "../../assets/css/Button.css";
+import Button from "../common/button";
 
 function AuthButton({ className }) {
-  const { isLogged, handleLogout: onLogout } = useAuth();
+  const { isLogged, handleLogout } = useAuth();
+  const mutation = useMutation(logout);
 
   const handleLogoutClick = async () => {
-    await logout();
-    onLogout();
+    // await logout();
+    await mutation.execute();
+    handleLogout();
   };
 
   return isLogged ? (
-    <Button className={className} onClick={handleLogoutClick}>
+    <ConfirmationButton
+      confirmation="Are you sure?"
+      className={className}
+      onConfirm={handleLogoutClick}
+    >
       Logout
-    </Button>
+    </ConfirmationButton>
   ) : (
-    <Button as={Link} to="/login" variant="primary" className={className}>
-      Login
-    </Button>
+    <Link to="/login">Login</Link>
   );
 }
+const ConnectedAuthButton = (props) => (
+  <AuthContextConsumer>
+    {(auth) => <AuthButton {...auth} {...props} />}
+  </AuthContextConsumer>
+);
 
-export default AuthButton;
+export default ConnectedAuthButton;
+
+// export default AuthButton;

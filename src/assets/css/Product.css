@@ -1,4 +1,4 @@
-.product {
+.advert {
   border-bottom-width: 1px;
   cursor: pointer;
   display: flex;
@@ -8,18 +8,18 @@
   transition: background-color 0.2s;
 }
 
-.product:hover {
+.advert:hover {
   background-color: rgba(0, 0, 0, 0.03);
 }
 
-.product-actions {
+.advert-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   max-width: 425px;
 }
 
-.product-name {
+.advert-name {
   color: rgb(20, 23, 26);
   font-weight: bold;
   border: solid rgba(236, 227, 227, 0.842) 0.2px;

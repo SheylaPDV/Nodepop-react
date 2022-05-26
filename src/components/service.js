@@ -1,34 +1,42 @@
-import client from '../api/client';
+import client from "../api/client";
+import { withFormData } from "../utils/withFormData";
 
-const productsBaseUrl = '/api/v1/adverts';
+const advertsBaseUrl = "/api/v1/adverts";
 
-export const getLatestProducts = () => {
-  const url = `${productsBaseUrl}`;
+export const getLatestAdverts = () => {
+  const url = `${advertsBaseUrl}`;
   return client.get(url);
 };
 
-export const getProduct = (productId) => {
-  const url = `${productsBaseUrl}/${productId}`;
+export const getTags = () => {
+  return client.get(`${advertsBaseUrl}/tags`);
+};
+
+export const getAdvert = (adverttId) => {
+  const url = `${advertsBaseUrl}/${adverttId}`;
   return client.get(url);
 };
+export const createAdvert = withFormData((newAdvert) => {
+  return client.post(advertsBaseUrl, newAdvert);
+});
 
-export const createProduct = (product) => {
-  const url = `${productsBaseUrl}`;
-  const bodyFormData = new FormData();
-  bodyFormData.append('name', product.name);
-  bodyFormData.append('sale', product.sale);
-  bodyFormData.append('price', product.price);
-  bodyFormData.append('tags', product.tags);
-  bodyFormData.append('photo', product.photo);
+// export const createadvert = (advert) => {
+//   const url = `${advertsBaseUrl}`;
+//   const bodyFormData = new FormData();
+//   bodyFormData.append("name", advert.name);
+//   bodyFormData.append("sale", advert.sale);
+//   bodyFormData.append("price", advert.price);
+//   bodyFormData.append("tags", advert.tags);
+//   bodyFormData.append("photo", advert.photo);
 
-  const headers = {
-    'Content-Type': 'multipart/form-data',
-  };
+//   const headers = {
+//     "Content-Type": "multipart/form-data",
+//   };
 
-  return client.post(url, bodyFormData, { headers: headers });
-};
+//   return client.post(url, bodyFormData, { headers: headers });
+// };
 
-export const deleteProduct = (productId) => {
-  const url = `${productsBaseUrl}/${productId}`;
+export const deleteAdvert = (advertId) => {
+  const url = `${advertsBaseUrl}/${advertId}`;
   return client.delete(url);
 };

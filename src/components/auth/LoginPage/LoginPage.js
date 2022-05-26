@@ -1,10 +1,10 @@
-import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '../../common/button';
-import { login } from '../service';
-import FormField from '../../common/FormField';
-import '../../../assets/css/LoginPage.css';
-import T from 'prop-types';
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../common/button";
+import { login } from "../service";
+import FormField from "../../common/FormField";
+import "../../../assets/css/LoginPage.css";
+import T from "prop-types";
 
 function useRenders() {
   const count = useRef(1);
@@ -21,8 +21,8 @@ function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +39,7 @@ function LoginPage({ onLogin }) {
     setCredentials((credentials) => ({
       ...credentials,
       [event.target.name]:
-        event.target.type === 'checkbox'
+        event.target.type === "checkbox"
           ? event.target.checked
           : event.target.value,
     }));
@@ -55,7 +55,7 @@ function LoginPage({ onLogin }) {
       await login(credentials);
       setIsLoading(false);
       onLogin();
-      const from = location.state?.from?.pathname || '/products';
+      const from = location.state?.from?.pathname || "/adverts";
       navigate(from, { replace: true });
     } catch (error) {
       setError(error);
@@ -64,7 +64,7 @@ function LoginPage({ onLogin }) {
   };
 
   const buttonDisabled = useMemo(() => {
-    console.log('calculando...');
+    console.log("calculando...");
     return !email || !password || isLoading;
   }, [email, password, isLoading]);
 

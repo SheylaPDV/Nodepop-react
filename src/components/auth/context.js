@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { getLatestProducts } from '../service';
+import { createContext, useContext, useState, useEffect } from "react";
+import { getLatestAdverts } from "../service";
 
 const AuthContext = createContext();
 
@@ -11,20 +11,20 @@ export function useAuth() {
   return auth;
 }
 
-export const useProducts = () => {
-  const [products, setProducts] = useState([]);
+export const useAdverts = () => {
+  const [adverts, setAdverts] = useState([]);
 
   useEffect(() => {
     const execute = async () => {
-      const products = await getLatestProducts();
-      setProducts(products);
+      const adverts = await getLatestAdverts();
+      setAdverts(adverts);
     };
     execute();
 
     return () => {};
   }, []);
 
-  return products;
+  return adverts;
 };
 
 export default AuthContext;
