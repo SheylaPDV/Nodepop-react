@@ -4,6 +4,8 @@ import { useAuth, AuthContextConsumer } from "./context";
 import useMutation from "../hooks/useMutation";
 import ConfirmationButton from "../common/ConfirmationButton";
 import "../../assets/css/Button.css";
+import "../../assets/css/header.css";
+
 import Button from "../common/button";
 
 function AuthButton({ className }) {
@@ -18,6 +20,8 @@ function AuthButton({ className }) {
 
   return isLogged ? (
     <ConfirmationButton
+      // className="header-nav"
+      // style={{ color: "green" }}
       confirmation="Are you sure?"
       className={className}
       onConfirm={handleLogoutClick}

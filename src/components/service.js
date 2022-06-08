@@ -12,29 +12,13 @@ export const getTags = () => {
   return client.get(`${advertsBaseUrl}/tags`);
 };
 
-export const getAdvert = (adverttId) => {
-  const url = `${advertsBaseUrl}/${adverttId}`;
+export const getAdvert = (advertId) => {
+  const url = `${advertsBaseUrl}/${advertId}`;
   return client.get(url);
 };
 export const createAdvert = withFormData((newAdvert) => {
   return client.post(advertsBaseUrl, newAdvert);
 });
-
-// export const createadvert = (advert) => {
-//   const url = `${advertsBaseUrl}`;
-//   const bodyFormData = new FormData();
-//   bodyFormData.append("name", advert.name);
-//   bodyFormData.append("sale", advert.sale);
-//   bodyFormData.append("price", advert.price);
-//   bodyFormData.append("tags", advert.tags);
-//   bodyFormData.append("photo", advert.photo);
-
-//   const headers = {
-//     "Content-Type": "multipart/form-data",
-//   };
-
-//   return client.post(url, bodyFormData, { headers: headers });
-// };
 
 export const deleteAdvert = (advertId) => {
   const url = `${advertsBaseUrl}/${advertId}`;

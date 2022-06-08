@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/unnamed.jpg";
 import "../../assets/css/header.css";
+import "../../assets/css/Button.css";
 import AuthButton from "../auth/AuthButton";
 import Button from "../common/button";
 
@@ -11,7 +12,6 @@ function Header({ className }) {
       <Link to="/">
         <div className="header-logo">
           <img src={logo} className="Loooooo" alt="Nodepop-React"></img>
-          {/* <Icon width="32" height="32" /> */}
         </div>
       </Link>
       <nav className="header-nav">
@@ -28,13 +28,8 @@ function Header({ className }) {
         >
           <Button>All adverts</Button>
         </NavLink>
-        {/* <NavLink
-          to="/signup"
-          style={({ isActive }) => (isActive ? { color: "green" } : null)}
-          end
-        ></NavLink> */}
 
-        <AuthButton className="header-button" />
+        <AuthButton className="styled-button" />
       </nav>
     </header>
   );

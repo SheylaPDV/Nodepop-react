@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import T from "prop-types";
-
-function ConfirmationButton({ confirmation, onConfirm, ...props }) {
-  const [confirmationVisible, setConfirmationVisible] = React.useState(false);
+import "../../assets/css/Button.css";
+function ConfirmationButton({ className, confirmation, onConfirm, ...props }) {
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
 
   const showConfirmation = () => setConfirmationVisible(true);
   const hideConfirmation = () => setConfirmationVisible(false);
@@ -16,12 +16,22 @@ function ConfirmationButton({ confirmation, onConfirm, ...props }) {
 
   return (
     <>
-      <button onClick={handleClick} {...props} />
+      <button className={className} onClick={handleClick} {...props} />
       {confirmationVisible && (
         <div>
           {confirmation}
-          <button onClick={handleConfirmClick}>Ok</button>
-          <button onClick={handleCancelClick}>Cancel</button>
+          <button
+            className="styled-button-selected"
+            onClick={handleConfirmClick}
+          >
+            Ok
+          </button>
+          <button
+            className="styled-button-selected"
+            onClick={handleCancelClick}
+          >
+            Cancel
+          </button>
         </div>
       )}
     </>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import RequireAuth from "./components/auth/RequireAuth";
-import AdvertPage from "./components/adverts/AdvertPage/AdverttPage";
-import AdvertsPage from "./components/adverts/advertsPage/AdvertsPage";
+import AdvertPage from "./components/adverts/AdvertPage/AdvertPage";
+import AdvertsPage from "./components/adverts/AdvertsPage/AdvertsPage";
 import { AuthContextProvider } from "./components/auth/context";
 import Layout from "./components/layout/layout";
 import LoginPage from "./components/auth/LoginPage/LoginPage";

@@ -136,14 +136,15 @@
 // export default NewProductPage;
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
-import { createadvert } from "../../service";
-import NewAdvertForm from "./NewadvertForm";
+import styles from "../AdvertsPage/AdvertsPage.module.css";
+import "../../../assets/css/NewAdvertPage.css";
+import { createAdvert } from "../../service";
+import NewAdvertForm from "./NewAdvertForm";
 import useMutation from "../../hooks/useMutation";
 
-function NewAdvertPage() {
+function NewAdvertPage({ className }) {
   const navigate = useNavigate();
-  const mutation = useMutation(createadvert);
+  const mutation = useMutation(createAdvert);
 
   const handleSubmit = (newAdvert) => {
     mutation.execute(newAdvert).then(({ id }) => navigate(`/adverts/${id}`));
@@ -155,7 +156,10 @@ function NewAdvertPage() {
 
   return (
     <>
-      <NewAdvertForm onSubmit={handleSubmit} />
+      <h4 className={styles.newProductPage}>
+        Ad upload
+        <NewAdvertForm onSubmit={handleSubmit} />
+      </h4>
     </>
   );
 }
