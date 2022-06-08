@@ -6,13 +6,7 @@ import { advert } from "../../propTypes";
 import { saleFilter } from "./filters";
 import "../../../assets/css/Button.css";
 
-function FiltersForm({
-  initialFilters,
-  defaultFilters,
-  onFilter,
-  prices,
-  ...props
-}) {
+function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
   const {
     formValue: filters,
     setFormValue,
@@ -26,7 +20,7 @@ function FiltersForm({
   };
   //  const { data: tags = [] } = useQuery(getTags);
 
-  const { name, sale, maxprice, minprice, tags } = filters;
+  const { name, sale, price, tags } = filters;
   const min = Math.min(...prices);
   const max = Math.max(...prices);
 
@@ -41,7 +35,7 @@ function FiltersForm({
       <input
         // type="number"
         name="price"
-        value={minprice}
+        value={price}
         onChange={handleChange}
         min={min}
         marks={{ [max]: max, [min]: min }}
@@ -50,7 +44,7 @@ function FiltersForm({
       <input
         // type="number"
         name="price"
-        value={maxprice}
+        value={price}
         onChange={handleChange}
         max={max}
         marks={{ [max]: max, [min]: min }}
