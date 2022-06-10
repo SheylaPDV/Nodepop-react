@@ -5,7 +5,7 @@ const getValueByType = {
 
   number: ({ value }) => Number(value),
 
-  "select-multiple": ({ selectedOptions }) =>
+  select: ({ selectedOptions }) =>
     [...selectedOptions].map(({ value }) => value),
 
   file: ({ files }) => files[0] || null,
@@ -25,8 +25,13 @@ function useForm(initialFormValue) {
 
   const handleChange = (ev) => {
     console.log("handlechange", ev);
-    const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
-    updateFormValue(ev.target.name, valueGetter(ev.target));
+    if (ev.target) {
+      const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
+      updateFormValue(ev.target.name, valueGetter(ev.target));
+    } else {
+      const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
+      updateFormValue(ev.value);
+    }
   };
 
   const handleSubmit = (onSubmit) => (ev) => {

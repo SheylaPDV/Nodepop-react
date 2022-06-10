@@ -5,6 +5,7 @@ import RadioGroup from "../../common/RadioGroup";
 import { advert } from "../../propTypes";
 import { saleFilter } from "./filters";
 import "../../../assets/css/Button.css";
+import SelectRange from "../../common/SelectRange";
 
 function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
   const {
@@ -18,7 +19,6 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
     setFormValue(defaultFilters);
     onFilter(defaultFilters);
   };
-  //  const { data: tags = [] } = useQuery(getTags);
 
   const { name, sale, price, tags } = filters;
   const min = Math.min(...prices);
@@ -31,7 +31,7 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
       <h2>Filters</h2>
       <label>Name:</label>
       <input name="name" value={name} onChange={handleChange} />
-      Min:
+      {/* Min:
       <input
         // type="number"
         name="price"
@@ -42,28 +42,28 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
       />
       Max:
       <input
-        // type="number"
         name="price"
         value={price}
         onChange={handleChange}
         max={max}
         marks={{ [max]: max, [min]: min }}
-      />
+      /> */}
       <RadioGroup
         options={Object.values(saleFilter)}
         name="sale"
         value={sale}
         onChange={handleChange}
       />
-      <SelectTags multiple name="tags" value={tags} onChange={handleChange} />
-      {/* <SelectTags
-      multiple
-        options={tags}
-        name="tags"
-        value={tags}
+      {/* <SelectRange
+        min={min}
+        max={max}
+        value={price}
+        name="price"
         onChange={handleChange}
-        {...props}
+        style={{ width: 400, margin: 24 }}
+        marks={{ [min]: min, [max]: max }}
       /> */}
+      <SelectTags multiple name="tags" value={tags} onChange={handleChange} />
       <button className="styled-button" type="submit">
         Filter
       </button>

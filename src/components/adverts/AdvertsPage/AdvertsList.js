@@ -2,24 +2,13 @@ import React from "react";
 import T from "prop-types";
 import { Link } from "react-router-dom";
 import "../../../assets/css/AdvertsPage.css";
-import styles from "./AdvertsPage.module.css";
 import Photo from "../../common/Photo";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+
 import placeholder from "../../../assets/images/placeholder.png";
 
 import { advert } from "../../propTypes";
 
 function Advert({ id, name, sale, price, tags, photo }) {
-  const navigate = useNavigate();
-  const [advert, setAdvert] = useState({
-    id: "",
-    name: "",
-    price: 0,
-    sale: false,
-    tags: [],
-    photo: "",
-  });
   return (
     <article className="advert bordered">
       <div className="left">
@@ -31,7 +20,6 @@ function Advert({ id, name, sale, price, tags, photo }) {
           height="200"
           style={{ objectFit: "contain" }}
         />
-        {/* <span className="advert-name">{photo}</span> */}
       </div>
       <div className="right">
         <div className="advert-header">

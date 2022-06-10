@@ -41,7 +41,10 @@ function AdvertsPage() {
           />
         )}
         {filteredAdverts.length ? (
-          <AdvertsList adverts={filteredAdverts} />
+          <h4>
+            ADVERTS LIST
+            <AdvertsList adverts={filteredAdverts} />
+          </h4>
         ) : (
           <EmptyList advertsCount={adverts.length} />
         )}
