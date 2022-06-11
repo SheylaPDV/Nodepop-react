@@ -31,6 +31,18 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
       <h2>Filters</h2>
       <label>Name:</label>
       <input name="name" value={name} onChange={handleChange} />
+      <label>Price</label>
+      <input
+        type="range"
+        value={price}
+        max={max}
+        min={min}
+        name="price"
+        onChange={handleChange}
+        style={{ width: 400, margin: 24 }}
+        marks={{ [min]: min, [max]: max }}
+      />
+
       {/* Min:
       <input
         // type="number"

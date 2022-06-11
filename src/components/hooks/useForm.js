@@ -24,14 +24,8 @@ function useForm(initialFormValue) {
   };
 
   const handleChange = (ev) => {
-    console.log("handlechange", ev);
-    if (ev.target) {
-      const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
-      updateFormValue(ev.target.name, valueGetter(ev.target));
-    } else {
-      const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
-      updateFormValue(ev.value);
-    }
+    const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
+    updateFormValue(ev.target.name, valueGetter(ev.target));
   };
 
   const handleSubmit = (onSubmit) => (ev) => {
