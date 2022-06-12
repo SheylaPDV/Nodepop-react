@@ -2,7 +2,6 @@ import React from "react";
 import T from "prop-types";
 import "../../../assets/css/Button.css";
 import "../../../assets/css/Advert.css";
-// import styles from "./AdvertsPage.module.css";
 import ConfirmationButton from "../../common/ConfirmationButton";
 import placeholder from "../../../assets/images/placeholder.png";
 import { advert } from "../../propTypes";

@@ -16,9 +16,7 @@ const getFilters = () => storage.get("filters") || defaultFilters;
 const saveFilters = (filters) => storage.set("filters", filters);
 
 function AdvertsPage() {
-  const { isLoading, error, data: adverts = [] } = useQuery(getLatestAdverts);
-  const fpp = getFilters();
-  console.log("FILTERS1: ", fpp);
+  const { error, data: adverts = [] } = useQuery(getLatestAdverts);
   const [filters, setFilters] = useState(getFilters);
 
   useEffect(() => {
@@ -41,7 +39,7 @@ function AdvertsPage() {
           <FiltersForm
             initialFilters={filters}
             defaultFilters={defaultFilters}
-            prices={adverts.map(({ price }) => price)}
+            // prices={adverts.map(({ price }) => price)}
             onFilter={setFilters}
           />
         )}
