@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const getValueByType = {
   checkbox: ({ checked }) => checked,
@@ -13,8 +13,11 @@ const getValueByType = {
 
 const defaultGetValue = ({ value }) => value;
 
+// VALOR INCIIAL DEL FORMULARIO
+
 function useForm(initialFormValue) {
-  const [formValue, setFormValue] = React.useState(initialFormValue);
+  // AQUI GUARDAMOS EL
+  const [formValue, setFormValue] = useState(initialFormValue);
 
   const updateFormValue = (name, value) => {
     setFormValue((currentFormValue) => ({
