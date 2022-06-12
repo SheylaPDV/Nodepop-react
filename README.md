@@ -2,20 +2,6 @@
 
 ## Practica Nodepop
 
-Hola David,
-No me ha dado tiempo realizar las siguientes tareas:
-
-- Los filtros
-- El checkbox para recordar usuario
-- La foto la envio, pero no puedo pintarla.
-- Que todos los campos sean requeridos
-- las confirmaciones y la pagina not found page
-
-No me ha dado tiempo, he investigado un poco lo de los filtros pero la verdad que me cuesta comprender bastante React, creo que es de los modulos que mas me esta costando, asi que tendré que darle duro!!
-No estoy especialmente orgullosa con el resultado.. pero algo ha salido jaja
-
-Muchas gracias!!!
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
