@@ -6,7 +6,7 @@ export const saleFilter = {
 
 export const defaultFilters = {
   name: "",
-  price: [],
+  price: 0,
   sale: saleFilter.all.value,
   tags: [],
 };
@@ -21,17 +21,29 @@ const filterByName =
     return !cleanFilter || new RegExp(cleanFilter, "gi").test(name);
   };
 
+// const filterByPrice =
+//   (filter) =>
+//   ({ price }) => {
+//     if (!filter.length) {
+//       return true;
+//     }
+//     const [min, max] = filter;
+//     if (!max) {
+//       return price >= min;
+//     }
+//     return price >= min && price <= max;
+//   };
+
 const filterByPrice =
   (filter) =>
   ({ price }) => {
-    if (!filter.length) {
+    console.log("FILTERBYPRICE-filter: ", filter); // VALOR DEL FILTRO
+    console.log("FILTERBYPRICE-price: ", price); // VALOR DEL PRODUCTO
+    if (filter === 0) {
       return true;
+    } else {
+      return price <= filter;
     }
-    const [min, max] = filter;
-    if (!max) {
-      return price >= min;
-    }
-    return price >= min && price <= max;
   };
 
 const filterBySale =

@@ -20,11 +20,9 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
     onFilter(defaultFilters);
   };
 
-  const { name, sale, maxprice, minprice, tags } = filters;
-  const min = Math.min(...prices);
-  const max = Math.max(...prices);
-
-  console.log(min);
+  const { name, sale, price, tags } = filters;
+  // const min = Math.min(...prices);
+  // const max = Math.max(...prices);
 
   return (
     <form onSubmit={handleSubmit(onFilter)}>
@@ -32,7 +30,7 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
       <label>Name:</label>
       <input name="name" value={name} onChange={handleChange} />
       <label>Price</label>
-      <input
+      {/* <input
         placeholder="min price"
         type="number"
         value={minprice}
@@ -41,16 +39,14 @@ function FiltersForm({ initialFilters, defaultFilters, onFilter, prices }) {
         onChange={handleChange}
         style={{ width: 70, margin: 24 }}
         marks={{ [min]: min }}
-      />
+      /> */}
       <input
-        placeholder="max price"
         type="number"
-        value={maxprice}
-        max={max}
+        placeholder="MAX"
+        value={price}
         name="price"
         onChange={handleChange}
         style={{ width: 70, margin: 24 }}
-        marks={{ [max]: max }}
       />
 
       {/* Min:

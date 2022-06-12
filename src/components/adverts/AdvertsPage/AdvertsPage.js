@@ -17,6 +17,8 @@ const saveFilters = (filters) => storage.set("filters", filters);
 
 function AdvertsPage() {
   const { isLoading, error, data: adverts = [] } = useQuery(getLatestAdverts);
+  const fpp = getFilters();
+  console.log("FILTERS1: ", fpp);
   const [filters, setFilters] = useState(getFilters);
 
   useEffect(() => {
@@ -28,6 +30,9 @@ function AdvertsPage() {
   }
 
   const filteredAdverts = filterAdverts(adverts, filters);
+
+  console.log("FILTERS: ", filters);
+  console.log("ADVERTS: ", adverts);
 
   return (
     <div className={styles.advertsPage}>
