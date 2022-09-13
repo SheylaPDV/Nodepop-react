@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const getValueByType = {
   checkbox: ({ checked }) => checked,
 
   number: ({ value }) => Number(value),
 
-  "select-multiple": ({ selectedOptions }) =>
+  select: ({ selectedOptions }) =>
     [...selectedOptions].map(({ value }) => value),
 
   file: ({ files }) => files[0] || null,
@@ -13,10 +13,15 @@ const getValueByType = {
 
 const defaultGetValue = ({ value }) => value;
 
+// VALOR INCIIAL DEL FORMULARIO
+
 function useForm(initialFormValue) {
-  const [formValue, setFormValue] = React.useState(initialFormValue);
+  // AQUI GUARDAMOS EL
+  const [formValue, setFormValue] = useState(initialFormValue);
 
   const updateFormValue = (name, value) => {
+    console.log("UPDATEFROMVALUE: ", name);
+    console.log("UPDATEFROMVALUE: ", value);
     setFormValue((currentFormValue) => ({
       ...currentFormValue,
       [name]: value,
@@ -24,12 +29,16 @@ function useForm(initialFormValue) {
   };
 
   const handleChange = (ev) => {
-    console.log("handlechange", ev);
+    console.log("HANDLECHANGE-TYPE: ", ev.target.type);
+    console.log("HANDLECHANGE-NAME: ", ev.target.name);
     const valueGetter = getValueByType[ev.target.type] || defaultGetValue;
+    console.log("var-valueGetter: ", valueGetter);
     updateFormValue(ev.target.name, valueGetter(ev.target));
   };
 
   const handleSubmit = (onSubmit) => (ev) => {
+    console.log("HANDLESUBMIT: ", ev);
+    console.log("HANDLESUBMIT: ", formValue);
     ev.preventDefault();
     onSubmit(formValue);
   };

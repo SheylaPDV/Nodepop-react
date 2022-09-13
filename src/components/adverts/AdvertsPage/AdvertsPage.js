@@ -16,7 +16,7 @@ const getFilters = () => storage.get("filters") || defaultFilters;
 const saveFilters = (filters) => storage.set("filters", filters);
 
 function AdvertsPage() {
-  const { isLoading, error, data: adverts = [] } = useQuery(getLatestAdverts);
+  const { error, data: adverts = [] } = useQuery(getLatestAdverts);
   const [filters, setFilters] = useState(getFilters);
 
   useEffect(() => {
@@ -29,6 +29,9 @@ function AdvertsPage() {
 
   const filteredAdverts = filterAdverts(adverts, filters);
 
+  console.log("FILTERS: ", filters);
+  console.log("ADVERTS: ", adverts);
+
   return (
     <div className={styles.advertsPage}>
       <Page title="What are you looking for today?">
@@ -36,12 +39,15 @@ function AdvertsPage() {
           <FiltersForm
             initialFilters={filters}
             defaultFilters={defaultFilters}
-            prices={adverts.map(({ price }) => price)}
+            // prices={adverts.map(({ price }) => price)}
             onFilter={setFilters}
           />
         )}
         {filteredAdverts.length ? (
-          <AdvertsList adverts={filteredAdverts} />
+          <h4>
+            ADVERTS LIST
+            <AdvertsList adverts={filteredAdverts} />
+          </h4>
         ) : (
           <EmptyList advertsCount={adverts.length} />
         )}

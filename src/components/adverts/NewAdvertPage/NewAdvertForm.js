@@ -4,7 +4,6 @@ import "../../../assets/css/Button.css";
 import useForm from "../../hooks/useForm";
 import InputFile from "../../common/InputFile";
 import SelectTags from "../../SelectTags/SelectTags";
-import styles from "../AdvertsPage/AdvertsPage.module.css";
 import "../../../assets/css/NewAdvertPage.css";
 const validName = ({ name }) => name;
 const validPrice = ({ price }) =>
