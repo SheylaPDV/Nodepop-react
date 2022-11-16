@@ -2,7 +2,7 @@
 
 ## Practica Nodepop
 
-Es una aplicacion para la compra/venta de productos similar a Wallapop que utiliza un API construido con Nestjs y BBDD MongoDB.
+Es una aplicación para la compra/venta de productos similar a Wallapop que utiliza un API construido con Nestjs y BBDD MongoDB.
 
 ## Swagger
 
